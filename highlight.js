@@ -1,9 +1,19 @@
-[].forEach.call(
-    document.getElementsByTagName("a"),
-    function (element) {
-        var href = element.getAttribute("href");
-        if (href && href.substring(0, 7) === "http://") {
-            element.style.border = "5px solid red";
-        }
+(function (exports) {
+    function isSecure(url) {
+        return url.substring(0, 7) !== "http://";
     }
-);
+
+    if (typeof document !== "undefined") {
+        [].forEach.call(
+            document.getElementsByTagName("a"),
+            function (element) {
+                var url = element.getAttribute("href");
+                if (!isSecure(url)) {
+                    element.style.border = "5px solid red";
+                }
+            }
+        );
+    }
+
+    exports.isSecure = isSecure;
+}(this));
