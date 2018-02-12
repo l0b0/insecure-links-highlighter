@@ -1,11 +1,9 @@
 # Build
 FROM node:9.5.0
 
-# Build dir
 RUN mkdir /build
 WORKDIR /build
 
-# Install deps
 COPY package.json .
 RUN npm install
 
