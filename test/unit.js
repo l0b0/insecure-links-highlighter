@@ -13,6 +13,9 @@ describe("highlight", function() {
         it("should return false for an HTTP URL", function() {
             assert.ok(!highlight.isSecure("http://example.org"));
         });
+        it("should return false for an FPT URL", function() {
+            assert.ok(!highlight.isSecure("ftp://example.org"));
+        });
     });
 
     describe(highlight.highlight.name, function() {

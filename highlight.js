@@ -27,7 +27,7 @@
     }
 
     function isSecure(url) {
-        return url.substring(0, 7) !== "http://";
+        return !(url.startsWith("http://") || url.startsWith("ftp://"));
     }
 
     function highlight(element) {
