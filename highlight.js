@@ -10,6 +10,22 @@
             getLinks(document),
             highlightInsecureLinks
         );
+        [].forEach.call(
+            getIframeDocuments(document),
+            processDocument
+        );
+    }
+
+    function getIframeDocuments(document) {
+        var documents = [];
+
+        [].forEach.call(
+            document.getElementsByTagName("iframe"),
+            function (iframe) {
+                documents.push(iframe.contentDocument);
+            }
+        );
+        return documents;
     }
 
     function getLinks(document) {
