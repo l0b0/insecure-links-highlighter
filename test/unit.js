@@ -10,6 +10,9 @@ describe("highlight", function() {
         it("should return true for an HTTPS URL", function() {
             assert.ok(highlight.isSecure("https://example.org"));
         });
+        it("should return false for an HTTP URL", function() {
+            assert.ok(!highlight.isSecure("http://example.org"));
+        });
     });
 
     describe(highlight.highlight.name, function() {
