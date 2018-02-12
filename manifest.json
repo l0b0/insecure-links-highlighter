@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Insecure links highlighter",
+  "version": "1.0",
+  "description": "Highlight insecure links",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "highlight.js"
+      ]
+    }
+  ]
+}
