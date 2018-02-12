@@ -2,6 +2,13 @@ name = $(notdir $(CURDIR))
 
 nodejs_docker_image = $(name)-nodejs
 
+extension_file = $(name).xpi
+
+build: $(extension_file)
+
+$(extension_file): highlight.js manifest.json
+	zip -r -FS $@ $^
+
 test: test-acceptance test-lint test-unit
 
 test-acceptance: python-docker-image
@@ -20,4 +27,4 @@ nodejs-docker-image:
 python-docker-image:
 	docker-compose build
 
-.PHONY: nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
+.PHONY: build nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
