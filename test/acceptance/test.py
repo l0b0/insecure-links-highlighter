@@ -6,8 +6,6 @@ SELENIUM_URL = 'http://selenium:4444/wd/hub'
 
 
 class UserAcceptanceTests(unittest.TestCase):
-    web_driver = None
-
     driver = None
 
     @classmethod
