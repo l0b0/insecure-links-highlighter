@@ -1,7 +1,7 @@
 /*global describe, it, require*/
 
 var assert = require("assert"),
-    highlight = require("../highlight");
+    highlight = require("../../highlight");
 
 describe("highlight", function() {
     "use strict";
@@ -22,7 +22,8 @@ describe("highlight", function() {
         it("should set the style of the element", function() {
             var element = {"style": {}};
             highlight.highlight(element);
-            assert.equal(element.style.border, "5px solid red");
+            assert.equal(element.style.borderColor, "red");
+            assert.equal(element.style.borderStyle, "solid");
         });
     });
 });

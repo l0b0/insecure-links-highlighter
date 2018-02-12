@@ -1,16 +1,23 @@
 name = $(notdir $(CURDIR))
 
-docker_image = $(name)-nodejs
+nodejs_docker_image = $(name)-nodejs
 
-test: test-lint test-unit
+test: test-acceptance test-lint test-unit
 
-test-unit: docker
-	docker run --rm $(docker_image) /build/node_modules/.bin/mocha
+test-acceptance: python_docker_image
+	docker-compose run --rm acceptance_tests python -m unittest discover test/acceptance
 
-test-lint: docker
-	docker run --rm $(docker_image) /build/node_modules/.bin/eslint highlight.js test/unit.js
+test-unit: nodejs_docker_image
+	docker run --rm $(nodejs_docker_image) /build/node_modules/.bin/mocha test/unit
 
-docker:
-	docker build --tag $(docker_image) .
+test-lint: nodejs_docker_image python_docker_image
+	docker run --rm $(nodejs_docker_image) /build/node_modules/.bin/eslint highlight.js test/unit/test.js
+	docker-compose run --rm acceptance_tests pycodestyle --max-line-length=120 test/acceptance/test.py
 
-.PHONY: docker test test-lint test-unit
+nodejs_docker_image:
+	docker build --tag $(nodejs_docker_image) --file nodejs/Dockerfile .
+
+python_docker_image:
+	docker-compose build
+
+.PHONY: nodejs_docker_image python_docker_image test test-acceptance test-lint test-unit

@@ -31,7 +31,8 @@
     }
 
     function highlight(element) {
-        element.style.border = "5px solid red";
+        element.style.borderColor = "red";
+        element.style.borderStyle = "solid";
     }
 
     exports.isSecure = isSecure;
