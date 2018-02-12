@@ -1,4 +1,6 @@
 (function (exports) {
+    "use strict";
+
     function isSecure(url) {
         return url.substring(0, 7) !== "http://";
     }
