@@ -42,9 +42,6 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function isSecure(url, protocol) {
-        if (url.startsWith("http://") || url.startsWith("ftp://")) {
-            return false;
-        }
         if (url.startsWith("https://")) {
             return true;
         }
