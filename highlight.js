@@ -38,10 +38,10 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function isSecureLink(element) {
-        return isSecure(element.getAttribute("href"), exports.protocol);
+        return !element.hasAttribute("href") || isSecureURL(element.getAttribute("href"), exports.protocol);
     }
 
-    function isSecure(url, protocol) {
+    function isSecureURL(url, protocol) {
         url = url.toLowerCase();
         if (url.startsWith("https://")) {
             return true;
@@ -61,6 +61,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     exports.isAbsoluteURL = isAbsoluteURL;
-    exports.isSecure = isSecure;
+    exports.isSecureLink = isSecureLink;
+    exports.isSecureURL = isSecureURL;
     exports.highlight = highlight;
 }(this));

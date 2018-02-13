@@ -9,36 +9,43 @@ const { JSDOM } = jsdom;
 describe("highlight", function() {
     "use strict";
 
-    describe(highlight.isSecure.name, function() {
+    describe(highlight.isSecureURL.name, function() {
         it("should return true for an HTTPS URL on an HTTPS page", function() {
-            assert.ok(highlight.isSecure("https://example.org", "https:"));
+            assert.ok(highlight.isSecureURL("https://example.org", "https:"));
         });
         it("should return true for an HTTPS URL in a local file", function() {
-            assert.ok(highlight.isSecure("https://example.org", "file:"));
+            assert.ok(highlight.isSecureURL("https://example.org", "file:"));
         });
         it("should return true for an HTTPS URL on an insecure page", function() {
-            assert.ok(highlight.isSecure("https://example.org", "http:"));
+            assert.ok(highlight.isSecureURL("https://example.org", "http:"));
         });
         it("should return true for an uppercase HTTPS URL on an HTTPS page", function() {
-            assert.ok(highlight.isSecure("HTTPS://EXAMPLE.ORG", "https:"));
+            assert.ok(highlight.isSecureURL("HTTPS://EXAMPLE.ORG", "https:"));
         });
 
         it("should return false for an HTTP URL", function() {
-            assert.ok(!highlight.isSecure("http://example.org", "https:"));
+            assert.ok(!highlight.isSecureURL("http://example.org", "https:"));
         });
 
         it("should return false for an FPT URL", function() {
-            assert.ok(!highlight.isSecure("ftp://example.org", "https:"));
+            assert.ok(!highlight.isSecureURL("ftp://example.org", "https:"));
         });
 
         it("should return true for a relative URL on an HTTPS page", function() {
-            assert.ok(highlight.isSecure("example.html", "https:"));
+            assert.ok(highlight.isSecureURL("example.html", "https:"));
         });
         it("should return true for a relative URL in a local file", function() {
-            assert.ok(highlight.isSecure("example.html", "file:"));
+            assert.ok(highlight.isSecureURL("example.html", "file:"));
         });
         it("should return false for a relative URL on an HTTP page", function() {
-            assert.ok(!highlight.isSecure("example.html", "http:"));
+            assert.ok(!highlight.isSecureURL("example.html", "http:"));
+        });
+    });
+
+    describe(highlight.isSecureLink.name, function() {
+        it("should consider links without @href as secure", function() {
+            var element = (new JSDOM()).window.document.createElement("a");
+            assert.ok(highlight.isSecureLink(element));
         });
     });
 
