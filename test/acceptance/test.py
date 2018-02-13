@@ -25,10 +25,6 @@ class UserAcceptanceTests(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
 
-    def test_should_highlight_ftp_url(self):
-        link = self.driver.find_element_by_link_text('ftp')
-        self.assert_highlighted(link)
-
     def test_should_highlight_http_url(self):
         link = self.driver.find_element_by_link_text('http')
         self.assert_highlighted(link)
