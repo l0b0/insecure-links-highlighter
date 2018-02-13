@@ -11,7 +11,8 @@
       ],
       "js": [
         "highlight.js"
-      ]
+      ],
+      "all_frames": true
     }
   ],
   "icons": {
