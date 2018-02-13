@@ -1,7 +1,10 @@
 /*global describe, it, require*/
 
 var assert = require("assert"),
-    highlight = require("../../highlight");
+    highlight = require("../../highlight"),
+    jsdom = require("jsdom");
+
+const { JSDOM } = jsdom;
 
 describe("highlight", function() {
     "use strict";
@@ -41,10 +44,9 @@ describe("highlight", function() {
 
     describe(highlight.highlight.name, function() {
         it("should set the style of the element", function() {
-            var element = {"style": {}};
+            var element = (new JSDOM()).window.document.createElement("a");
             highlight.highlight(element);
-            assert.equal(element.style.borderColor, "red");
-            assert.equal(element.style.borderStyle, "solid");
+            assert.equal(element.style.cssText, "border-color: red !important; border-style: solid !important;");
         });
     });
 

@@ -54,8 +54,10 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function highlight(element) {
-        element.style.borderColor = "red";
-        element.style.borderStyle = "solid";
+        if (element.style.cssText !== "") {
+            element.style.cssText += "; ";
+        }
+        element.style.cssText += "border-color: red !important; border-style: solid !important;";
     }
 
     exports.isAbsoluteURL = isAbsoluteURL;

@@ -37,6 +37,10 @@ class UserAcceptanceTests(unittest.TestCase):
         link = self.driver.find_element_by_link_text('https')
         self.assert_not_highlighted(link)
 
+    def test_should_highlight_http_url_with_custom_css(self):
+        link = self.driver.find_element_by_link_text('styled')
+        self.assert_highlighted(link)
+
     def assert_highlighted(self, element):
         self.assertEqual('rgb(255, 0, 0)', element.value_of_css_property('border-top-color'))
         self.assertEqual('rgb(255, 0, 0)', element.value_of_css_property('border-right-color'))
