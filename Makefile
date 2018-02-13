@@ -4,10 +4,16 @@ nodejs_docker_image = $(name)-nodejs
 
 extension_file = $(name).xpi
 
+current_tag = $(shell git tag --list --points-at HEAD)
+previous_tag = $(shell git describe --abbrev=0 --tags $(shell git rev-list --tags --skip=1 --max-count=1))
+
 build: $(extension_file)
 
 $(extension_file): highlight.js icon.svg _locales manifest.json
 	zip -r -FS $@ $^
+
+changelog:
+	git log $(previous_tag)...$(current_tag) --pretty=format:'- %s <https://github.com/l0b0/insecure-links-highlighter/commit/%H>' --reverse
 
 test: test-acceptance test-lint test-unit
 
@@ -28,4 +34,4 @@ nodejs-docker-image:
 python-docker-image:
 	docker-compose build
 
-.PHONY: build nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
+.PHONY: build changelog nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
