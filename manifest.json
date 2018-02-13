@@ -3,6 +3,7 @@
   "name": "Insecure Links Highlighter",
   "version": "1.0",
   "description": "Highlight insecure links",
+  "author": "Victor Engmark",
   "content_scripts": [
     {
       "matches": [
