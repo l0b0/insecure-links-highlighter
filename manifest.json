@@ -4,6 +4,11 @@
   "description": "__MSG_extensionDescription__",
   "version": "1.0",
   "author": "Victor Engmark",
+  "developer": {
+    "name": "Victor Engmark",
+    "url": "https://github.com/l0b0"
+  },
+  "homepage_url": "https://github.com/l0b0/insecure-links-highlighter",
   "content_scripts": [
     {
       "matches": [
