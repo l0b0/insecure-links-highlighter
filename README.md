@@ -12,4 +12,4 @@ Browser add-on to highlight insecure links such as "http://example.org" and "ftp
 
 ## [License](LICENSE)
 
-GNU Affero GPL version 3 or later.
+GNU GPL version 3 or later.
