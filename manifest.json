@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Insecure links highlighter",
+  "name": "Insecure Links Highlighter",
   "version": "1.0",
   "description": "Highlight insecure links",
   "content_scripts": [
