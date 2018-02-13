@@ -13,7 +13,10 @@ You should have received a copy of the GNU General Public License along with thi
 (function (exports) {
     "use strict";
 
+    var protocolPrefixRegex = new RegExp("^(?:[a-z]+:)?//", "i");
+
     if (typeof document !== "undefined") {
+        exports.protocol = location.protocol;
         processDocument(document);
     }
 
@@ -35,11 +38,21 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function isSecureLink(element) {
-        return isSecure(element.getAttribute("href"));
+        return isSecure(element.getAttribute("href"), exports.protocol);
     }
 
-    function isSecure(url) {
-        return !(url.startsWith("http://") || url.startsWith("ftp://"));
+    function isSecure(url, protocol) {
+        if (url.startsWith("http://") || url.startsWith("ftp://")) {
+            return false;
+        }
+        if (url.startsWith("https://")) {
+            return true;
+        }
+        return !isAbsoluteURL(url) && (protocol === "file:" || protocol === "https:");
+    }
+
+    function isAbsoluteURL(url) {
+        return protocolPrefixRegex.test(url);
     }
 
     function highlight(element) {
@@ -47,6 +60,7 @@ You should have received a copy of the GNU General Public License along with thi
         element.style.borderStyle = "solid";
     }
 
+    exports.isAbsoluteURL = isAbsoluteURL;
     exports.isSecure = isSecure;
     exports.highlight = highlight;
 }(this));
