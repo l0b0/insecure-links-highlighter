@@ -12,5 +12,9 @@
         "highlight.js"
       ]
     }
-  ]
+  ],
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  }
 }
