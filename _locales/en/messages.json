@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "Insecure Links Highlighter",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Highlight insecure links.",
+    "description": "Description of the extension."
+  }
+}

@@ -6,7 +6,7 @@ extension_file = $(name).xpi
 
 build: $(extension_file)
 
-$(extension_file): highlight.js icon.svg manifest.json
+$(extension_file): highlight.js icon.svg _locales manifest.json
 	zip -r -FS $@ $^
 
 test: test-acceptance test-lint test-unit
