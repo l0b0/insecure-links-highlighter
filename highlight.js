@@ -42,6 +42,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function isSecure(url, protocol) {
+        url = url.toLowerCase();
         if (url.startsWith("https://")) {
             return true;
         }

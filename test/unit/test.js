@@ -16,6 +16,9 @@ describe("highlight", function() {
         it("should return true for an HTTPS URL on an insecure page", function() {
             assert.ok(highlight.isSecure("https://example.org", "http:"));
         });
+        it("should return true for an uppercase HTTPS URL on an HTTPS page", function() {
+            assert.ok(highlight.isSecure("HTTPS://EXAMPLE.ORG", "https:"));
+        });
 
         it("should return false for an HTTP URL", function() {
             assert.ok(!highlight.isSecure("http://example.org", "https:"));
