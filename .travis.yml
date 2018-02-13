@@ -1,6 +1,7 @@
 language: bash
 script:
   - make test
+  - make
 sudo: required
 services:
   - docker
