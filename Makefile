@@ -12,6 +12,7 @@ $(extension_file): highlight.js manifest.json
 test: test-acceptance test-lint test-unit
 
 test-acceptance: python-docker-image
+	docker-compose down
 	docker-compose run --rm acceptance_tests python -m unittest discover test/acceptance
 
 test-unit: nodejs-docker-image
