@@ -1,19 +1,17 @@
 name = $(notdir $(CURDIR))
 
 nodejs_docker_image = $(name)-nodejs
+ruby_docker_image = $(name)-ruby
 
 extension_file = $(name).xpi
 
-current_tag = $(shell git tag --list --points-at HEAD)
-previous_tag = $(shell git describe --abbrev=0 --tags $(shell git rev-list --tags --skip=1 --max-count=1))
-
-build: $(extension_file)
+build: changelog $(extension_file)
 
 $(extension_file): highlight.js icon.svg _locales manifest.json
 	zip -r -FS $@ $^
 
-changelog:
-	git log $(previous_tag)...$(current_tag) --pretty=format:'- %s <https://github.com/l0b0/insecure-links-highlighter/commit/%H>' --reverse
+changelog: .git/HEAD ruby-docker-image
+	docker run --env CHANGELOG_GITHUB_TOKEN=$(CHANGELOG_GITHUB_TOKEN) --rm $(ruby_docker_image) /changelog.sh
 
 test: test-acceptance test-lint test-unit
 
@@ -33,5 +31,8 @@ nodejs-docker-image:
 
 python-docker-image:
 	docker-compose build
+
+ruby-docker-image:
+	docker build --tag $(ruby_docker_image) --file ruby/Dockerfile .
 
 .PHONY: build changelog nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
