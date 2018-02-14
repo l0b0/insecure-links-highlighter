@@ -17,8 +17,8 @@
     }
   ],
   "icons": {
-    "48": "icon.svg",
-    "96": "icon.svg"
+    "48": "icons/48.png",
+    "96": "icons/96.png"
   },
   "default_locale": "en"
 }

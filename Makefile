@@ -7,7 +7,7 @@ extension_file = $(name).xpi
 
 build: $(extension_file)
 
-$(extension_file): highlight.js icon.svg _locales manifest.json
+$(extension_file): highlight.js icons _locales manifest.json
 	zip -r -FS $@ $^
 
 changelog: .git/HEAD ruby-docker-image
