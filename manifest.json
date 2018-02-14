@@ -2,12 +2,8 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.5",
+  "version": "1.6",
   "author": "Victor Engmark",
-  "developer": {
-    "name": "Victor Engmark",
-    "url": "https://github.com/l0b0"
-  },
   "homepage_url": "https://github.com/l0b0/insecure-links-highlighter",
   "content_scripts": [
     {
