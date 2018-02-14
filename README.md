@@ -1,6 +1,6 @@
 # Insecure Links Highlighter
 
-Browser add-on to highlight insecure links such as "http://example.org" and "ftp://example.org".
+Browser add-on to highlight insecure links such as "http://example.org" and "ftp://example.org". Let's get nicely meta and see how the previous sentence is rendered with the add-on installed: ![Screenshot of above sentence](screenshots/README.png "Screenshot of above sentence")
 
 ## Build
 
