@@ -23,7 +23,7 @@ Dependencies:
 1. Update version in [manifest.json](manifest.json)
 1. Make sure the project builds:
 
-        make build
+        make clean build
 1. Commit changes
 1. Run all tests in a clean state:
 
@@ -37,7 +37,7 @@ Dependencies:
         git push --tags
 1. Rebuild the .xpi file
 
-        make build
+        make
 1. [Upload](https://addons.mozilla.org/en-US/developers/addon/insecure-links-highlighter/versions/submit/) the new .xpi
 1. Submit the change log markup:
 
