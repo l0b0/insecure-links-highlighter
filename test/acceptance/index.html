@@ -14,5 +14,11 @@
 
 <a href="http://example.org" class="styled">styled</a>
 <script type="text/javascript" src="../../highlight.js"></script>
+<script type="text/javascript">
+    link = document.createElement("a");
+    link.setAttribute("href", "http://example.org");
+    link.appendChild(document.createTextNode("injected"));
+    document.body.appendChild(link);
+</script>
 </body>
 </html>

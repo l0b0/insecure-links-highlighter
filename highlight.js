@@ -17,18 +17,34 @@ You should have received a copy of the GNU General Public License along with thi
 
     if (typeof document !== "undefined") {
         exports.protocol = location.protocol;
-        processDocument(document);
+        processNode(document);
+        var observer = new MutationObserver(onMutation);
+        observer.observe(document, {"childList": true, "subtree": true});
     }
 
-    function processDocument(document) {
+    function onMutation(mutationRecords) {
+        mutationRecords.forEach(processMutationRecord);
+    }
+
+    function processMutationRecord(mutationRecord) {
+        mutationRecord.addedNodes.forEach(processMutationNode);
+    }
+
+    function processMutationNode(node) {
+        if (node instanceof Element) {
+            processNode(node.parentElement);
+        }
+    }
+
+    function processNode(node) {
         [].forEach.call(
-            getLinks(document),
+            getLinks(node),
             highlightInsecureLinks
         );
     }
 
-    function getLinks(document) {
-        return document.getElementsByTagName("a");
+    function getLinks(node) {
+        return node.getElementsByTagName("a");
     }
 
     function highlightInsecureLinks(element) {
