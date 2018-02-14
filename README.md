@@ -18,6 +18,25 @@ Dependencies:
 - Docker Compose
 - GNU Make
 
+## Release
+
+1. Update version in [manifest.json](manifest.json)
+2. Commit changes
+3. Run all tests in a clean state:
+
+        make clean test
+4. Tag the release:
+
+        git tag $version -m "Release"
+5. Push the changes:
+
+        git push
+        git push --tags
+6. Create the .xpi file and change log
+
+        make build changelog
+7. [Upload](https://addons.mozilla.org/en-US/developers/addon/insecure-links-highlighter/versions/submit/) the new .xpi
+8. Submit the change log markup
 
 ## [License](LICENSE)
 
