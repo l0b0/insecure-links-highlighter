@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License along with thi
 (function (exports) {
     "use strict";
 
-    var protocolPrefixRegex = new RegExp("^(?:[a-z]+:)?//", "i");
+    var protocolPrefixRegex = new RegExp("^[a-z]+://", "i");
 
     if (typeof document !== "undefined") {
         exports.protocol = location.protocol;
@@ -62,10 +62,10 @@ You should have received a copy of the GNU General Public License along with thi
         if (url.startsWith("https://")) {
             return true;
         }
-        return !isAbsoluteURL(url) && (protocol === "file:" || protocol === "https:");
+        return !hasExplicitProtocol(url) && (protocol === "file:" || protocol === "https:");
     }
 
-    function isAbsoluteURL(url) {
+    function hasExplicitProtocol(url) {
         return protocolPrefixRegex.test(url);
     }
 
@@ -76,7 +76,7 @@ You should have received a copy of the GNU General Public License along with thi
         element.style.cssText += "border-color: red !important; border-style: solid !important;";
     }
 
-    exports.isAbsoluteURL = isAbsoluteURL;
+    exports.hasExplicitProtocol = hasExplicitProtocol;
     exports.isSecureLink = isSecureLink;
     exports.isSecureURL = isSecureURL;
     exports.highlight = highlight;

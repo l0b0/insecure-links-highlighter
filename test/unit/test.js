@@ -40,6 +40,16 @@ describe("highlight", function() {
         it("should return false for a relative URL on an HTTP page", function() {
             assert.ok(!highlight.isSecureURL("example.html", "http:"));
         });
+
+        it("should return true for a protocol-relative URL on an HTTPS page", function() {
+            assert.ok(highlight.isSecureURL("//example.html", "https:"));
+        });
+        it("should return true for a protocol-relative URL in a local file", function() {
+            assert.ok(highlight.isSecureURL("//example.html", "file:"));
+        });
+        it("should return false for a protocol-relative URL on an HTTP page", function() {
+            assert.ok(!highlight.isSecureURL("//example.html", "http:"));
+        });
     });
 
     describe(highlight.isSecureLink.name, function() {
@@ -57,19 +67,19 @@ describe("highlight", function() {
         });
     });
 
-    describe(highlight.isAbsoluteURL.name, function() {
+    describe(highlight.hasExplicitProtocol.name, function() {
         it("should consider 'http://…' URLs as absolute", function() {
-            assert.ok(highlight.isAbsoluteURL("http://example.org"));
-            assert.ok(highlight.isAbsoluteURL("HTTP://example.org"));
+            assert.ok(highlight.hasExplicitProtocol("http://example.org"));
+            assert.ok(highlight.hasExplicitProtocol("HTTP://example.org"));
         });
-        it("should consider '//…' URLs as absolute", function() {
-            assert.ok(highlight.isAbsoluteURL("//example.org"));
+        it("should consider '//…' URLs as relative", function() {
+            assert.ok(!highlight.hasExplicitProtocol("//example.org"));
         });
         it("should consider '/PATH' URLs as relative", function() {
-            assert.ok(!highlight.isAbsoluteURL("/example.html"));
+            assert.ok(!highlight.hasExplicitProtocol("/example.html"));
         });
         it("should consider 'PATH' URLs as relative", function() {
-            assert.ok(!highlight.isAbsoluteURL("example.html"));
+            assert.ok(!highlight.hasExplicitProtocol("example.html"));
         });
     });
 });
