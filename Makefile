@@ -5,7 +5,7 @@ ruby_docker_image = $(name)-ruby
 
 extension_file = $(name).xpi
 
-build: changelog $(extension_file)
+build: $(extension_file)
 
 $(extension_file): highlight.js icon.svg _locales manifest.json
 	zip -r -FS $@ $^
