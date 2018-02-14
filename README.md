@@ -27,7 +27,7 @@ Dependencies:
         make clean test
 4. Tag the release:
 
-        git tag $version -m "Release"
+        git tag $(jq -r .version < manifest.json) -m "Release"
 5. Push the changes:
 
         git push
