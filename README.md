@@ -23,11 +23,8 @@ Dependencies:
 1. Update version in [manifest.json](manifest.json)
 1. Make sure the project builds:
 
-        make clean build
+        make clean build test
 1. Commit changes
-1. Run all tests in a clean state:
-
-        make clean test
 1. Tag the release:
 
         git tag $(jq -r .version < manifest.json) -m "Release"
