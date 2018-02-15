@@ -6,7 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 SELENIUM_URL = 'http://selenium:4444/wd/hub'
 
 
-class UserAcceptanceTests(unittest.TestCase):
+class TestLocalFile(unittest.TestCase):
     driver = None
 
     @classmethod
