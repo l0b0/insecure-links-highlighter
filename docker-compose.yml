@@ -1,14 +1,6 @@
 version: '3'
 services:
 
-    selenium:
-        image: selenium/standalone-firefox:3.9.1
-        ports:
-            - "4444"
-        volumes:
-            - /dev/shm:/dev/shm
-            - .:/project
-
     acceptance_tests:
         build:
           context: .
@@ -17,3 +9,11 @@ services:
             - selenium
         volumes:
             - ./test/acceptance:/screenshots
+
+    selenium:
+        image: selenium/standalone-firefox:3.9.1
+        ports:
+            - "4444"
+        volumes:
+            - /dev/shm:/dev/shm
+            - .:/project
