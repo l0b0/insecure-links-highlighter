@@ -1,19 +1,19 @@
 version: '3'
 services:
 
-    acceptance_tests:
-        build:
-          context: .
-          dockerfile: python/Dockerfile
-        depends_on:
-            - selenium
-        volumes:
-            - ./test/acceptance:/screenshots
+  acceptance_tests:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    depends_on:
+      - selenium
+    volumes:
+      - ./test/acceptance:/screenshots
 
-    selenium:
-        image: selenium/standalone-firefox:3.9.1
-        ports:
-            - "4444"
-        volumes:
-            - /dev/shm:/dev/shm
-            - .:/project
+  selenium:
+    image: selenium/standalone-firefox:3.9.1
+    ports:
+      - "4444"
+    volumes:
+      - /dev/shm:/dev/shm
+      - .:/project
