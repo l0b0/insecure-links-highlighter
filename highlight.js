@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License along with thi
         exports.protocol = location.protocol;
         processNode(document);
         var observer = new MutationObserver(onMutation);
-        observer.observe(document, {"childList": true, "subtree": true});
+        observer.observe(document, {"attributes": true, "childList": true, "subtree": true});
     }
 
     function onMutation(mutationRecords) {
@@ -27,7 +27,11 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function processMutationRecord(mutationRecord) {
-        mutationRecord.addedNodes.forEach(processMutationNode);
+        if (mutationRecord.type === "childList") {
+            mutationRecord.addedNodes.forEach(processMutationNode);
+        } else if (mutationRecord.type === "attributes" && mutationRecord.attributeName === "href") {
+            highlightInsecureLink(mutationRecord.target);
+        }
     }
 
     function processMutationNode(node) {

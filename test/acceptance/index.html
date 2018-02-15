@@ -23,5 +23,13 @@
     document.body.appendChild(link);
 </script>
 
+<a href="https://example.org" id="modify-on-mouse-over">modify on mouse over</a>
+<script type="text/javascript">
+    link = document.getElementById("modify-on-mouse-over");
+    link.addEventListener("mouseenter", function () {
+        link.setAttribute("href", "http://example.org");
+    });
+</script>
+
 </body>
 </html>

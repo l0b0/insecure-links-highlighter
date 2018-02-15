@@ -1,6 +1,7 @@
 import unittest
 
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 
 SELENIUM_URL = 'http://selenium:4444/wd/hub'
 
@@ -39,6 +40,12 @@ class UserAcceptanceTests(unittest.TestCase):
 
     def test_should_highlight_http_url_which_is_injected_into_dom(self):
         link = self.driver.find_element_by_link_text('injected')
+        self.assert_highlighted(link)
+
+    def test_should_highlight_url_which_is_changed_to_http_when_(self):
+        link = self.driver.find_element_by_link_text('modify on mouse over')
+        self.assert_not_highlighted(link)
+        ActionChains(self.driver).move_to_element(link).perform()
         self.assert_highlighted(link)
 
     def assert_highlighted(self, element):
