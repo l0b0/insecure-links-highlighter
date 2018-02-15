@@ -59,10 +59,10 @@ describe("highlight", function() {
         });
     });
 
-    describe(highlight.isSecureLink.name, function() {
+    describe(highlight.isInsecureLink.name, function() {
         it("should consider links without @href as secure", function() {
             var element = (new JSDOM()).window.document.createElement("a");
-            assert.ok(highlight.isSecureLink(element));
+            assert.ok(!highlight.isInsecureLink(element));
         });
     });
 

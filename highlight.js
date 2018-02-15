@@ -52,13 +52,13 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function highlightInsecureLink(element) {
-        if (!isSecureLink(element)) {
+        if (isInsecureLink(element)) {
             highlight(element);
         }
     }
 
-    function isSecureLink(element) {
-        return !element.hasAttribute("href") || isSecureURL(element.getAttribute("href"), exports.protocol);
+    function isInsecureLink(element) {
+        return element.hasAttribute("href") && !isSecureURL(element.getAttribute("href"), exports.protocol);
     }
 
     function isSecureURL(url, protocol) {
@@ -81,7 +81,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     exports.hasExplicitProtocol = hasExplicitProtocol;
-    exports.isSecureLink = isSecureLink;
+    exports.isInsecureLink = isInsecureLink;
     exports.isSecureURL = isSecureURL;
     exports.highlight = highlight;
 }(this));
