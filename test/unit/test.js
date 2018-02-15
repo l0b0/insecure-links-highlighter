@@ -50,6 +50,13 @@ describe("highlight", function() {
         it("should return false for a protocol-relative URL on an HTTP page", function() {
             assert.ok(!highlight.isSecureURL("//example.html", "http:"));
         });
+
+        it("should return true for a mailto URL", function() {
+            assert.ok(highlight.isSecureURL("mailto:user@example.org", "http:"));
+        });
+        it("should return true for a tel URL", function() {
+            assert.ok(highlight.isSecureURL("tel:+0000000000", "http:"));
+        });
     });
 
     describe(highlight.isSecureLink.name, function() {

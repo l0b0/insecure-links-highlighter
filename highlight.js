@@ -59,7 +59,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     function isSecureURL(url, protocol) {
         url = url.toLowerCase();
-        if (url.startsWith("https://")) {
+        if (url.startsWith("https://") || url.startsWith("mailto:") || url.startsWith("tel:")) {
             return true;
         }
         return !hasExplicitProtocol(url) && (protocol === "file:" || protocol === "https:");
