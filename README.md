@@ -32,9 +32,6 @@ Dependencies:
 
         git push
         git push --tags
-1. Rebuild the .xpi file
-
-        make
 1. [Upload](https://addons.mozilla.org/en-US/developers/addon/insecure-links-highlighter/versions/submit/) the new .xpi
 1. Submit the change log markup:
 
