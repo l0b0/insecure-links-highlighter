@@ -32,10 +32,11 @@ Dependencies:
 
         git push
         git push --tags
-1. [Upload](https://addons.mozilla.org/en-US/developers/addon/insecure-links-highlighter/versions/submit/) the new .xpi
-1. Submit the change log markup:
+1. Create the change log:
 
         make changelog
+1. [Upload](https://addons.mozilla.org/en-US/developers/addon/insecure-links-highlighter/versions/submit/) the new .xpi
+1. Submit the change log markup
 
 ## [License](LICENSE)
 
