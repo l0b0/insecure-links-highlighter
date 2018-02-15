@@ -42,7 +42,7 @@ class UserAcceptanceTests(unittest.TestCase):
         link = self.driver.find_element_by_link_text('injected')
         self.assert_highlighted(link)
 
-    def test_should_highlight_url_which_is_changed_to_http_when_(self):
+    def test_should_highlight_url_which_is_changed_to_http_when_moused_over(self):
         link = self.driver.find_element_by_link_text('modify on mouse over')
         self.assert_not_highlighted(link)
         ActionChains(self.driver).move_to_element(link).perform()
