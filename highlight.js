@@ -39,7 +39,7 @@ You should have received a copy of the GNU General Public License along with thi
     function processNode(node) {
         [].forEach.call(
             getLinks(node),
-            highlightInsecureLinks
+            highlightInsecureLink
         );
     }
 
@@ -47,7 +47,7 @@ You should have received a copy of the GNU General Public License along with thi
         return node.getElementsByTagName("a");
     }
 
-    function highlightInsecureLinks(element) {
+    function highlightInsecureLink(element) {
         if (!isSecureLink(element)) {
             highlight(element);
         }
