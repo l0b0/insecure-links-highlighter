@@ -15,6 +15,20 @@ You should have received a copy of the GNU General Public License along with thi
 
     let protocolPrefixRegex = new RegExp("^[a-z]+://", "i");
 
+    // Known secure protocols handled by the browser
+    let internalSecureProtocols = ["https"];
+
+    // Presumed secure since they are handled externally (see network.protocol-handler.external.[protocol])
+    let externallyHandledProtocols = ["mailto", "news", "nntp", "snews"];
+
+    // Presumed secure, commonly handled by add-ons or externally
+    let expectedExternallyHandledProtocols = ["tel"];
+    let secureProtocols = [].concat(
+        internalSecureProtocols,
+        externallyHandledProtocols,
+        expectedExternallyHandledProtocols
+    );
+
     if (typeof document !== "undefined") {
         exports.protocol = location.protocol;
         processNode(document);
@@ -64,7 +78,7 @@ You should have received a copy of the GNU General Public License along with thi
     function isSecureURL(url, protocol) {
         url = url.toLowerCase();
         let urlProtocol = url.split(":", 1)[0];
-        if (["https", "mailto", "nntps", "sips", "tel"].includes(urlProtocol)) {
+        if (secureProtocols.includes(urlProtocol)) {
             return true;
         }
         return !hasExplicitProtocol(url) && (protocol === "file:" || protocol === "https:");

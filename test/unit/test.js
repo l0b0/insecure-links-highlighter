@@ -54,18 +54,16 @@ describe("highlight", function() {
         it("should return true for a mailto URL", function() {
             assert.ok(highlight.isSecureURL("mailto:user@example.org", "http:"));
         });
-        it("should return false for an NNTP URL", function() {
-            assert.ok(!highlight.isSecureURL("nntp:example.org/group", "http:"));
+        it("should return true for a news URL", function() {
+            assert.ok(highlight.isSecureURL("news:example.org/group", "http:"));
         });
-        it("should return true for an NNTPS URL", function() {
-            assert.ok(highlight.isSecureURL("nntps:example.org/group", "http:"));
+        it("should return true for an NNTP URL", function() {
+            assert.ok(highlight.isSecureURL("nntp:example.org/group", "http:"));
         });
-        it("should return false for a SIP URL", function() {
-            assert.ok(!highlight.isSecureURL("sip:0-000-000-000@example.org", "http:"));
+        it("should return true for an snews URL", function() {
+            assert.ok(highlight.isSecureURL("snews:example.org/group", "http:"));
         });
-        it("should return true for a SIPS URL", function() {
-            assert.ok(highlight.isSecureURL("sips:0-000-000-000@example.org", "http:"));
-        });
+
         it("should return true for a tel URL", function() {
             assert.ok(highlight.isSecureURL("tel:+0000000000", "http:"));
         });
