@@ -54,6 +54,12 @@ describe("highlight", function() {
         it("should return true for a mailto URL", function() {
             assert.ok(highlight.isSecureURL("mailto:user@example.org", "http:"));
         });
+        it("should return false for an NNTP URL", function() {
+            assert.ok(!highlight.isSecureURL("nntp:example.org/group", "http:"));
+        });
+        it("should return true for an NNTPS URL", function() {
+            assert.ok(highlight.isSecureURL("nntps:example.org/group", "http:"));
+        });
         it("should return true for a tel URL", function() {
             assert.ok(highlight.isSecureURL("tel:+0000000000", "http:"));
         });
