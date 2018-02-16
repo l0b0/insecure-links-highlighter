@@ -60,6 +60,12 @@ describe("highlight", function() {
         it("should return true for an NNTPS URL", function() {
             assert.ok(highlight.isSecureURL("nntps:example.org/group", "http:"));
         });
+        it("should return false for a SIP URL", function() {
+            assert.ok(!highlight.isSecureURL("sip:0-000-000-000@example.org", "http:"));
+        });
+        it("should return true for a SIPS URL", function() {
+            assert.ok(highlight.isSecureURL("sips:0-000-000-000@example.org", "http:"));
+        });
         it("should return true for a tel URL", function() {
             assert.ok(highlight.isSecureURL("tel:+0000000000", "http:"));
         });

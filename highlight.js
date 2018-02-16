@@ -64,7 +64,7 @@ You should have received a copy of the GNU General Public License along with thi
     function isSecureURL(url, protocol) {
         url = url.toLowerCase();
         var urlProtocol = url.split(":", 1)[0];
-        if (["https", "mailto", "nntps", "tel"].includes(urlProtocol)) {
+        if (["https", "mailto", "nntps", "sips", "tel"].includes(urlProtocol)) {
             return true;
         }
         return !hasExplicitProtocol(url) && (protocol === "file:" || protocol === "https:");
