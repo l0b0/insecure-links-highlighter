@@ -5,6 +5,8 @@ ruby_docker_image = $(name)-ruby
 
 extension_file = $(name).xpi
 
+XML_EXTENSIONS = iml xml
+
 build: $(extension_file)
 
 $(extension_file): highlight.js icons _locales manifest.json
@@ -39,3 +41,5 @@ clean:
 	$(RM) $(name).xpi test/acceptance/*.png
 
 .PHONY: build changelog nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
+
+include make-includes/variables.mk make-includes/xml.mk
