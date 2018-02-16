@@ -6,9 +6,15 @@ services:
       context: .
       dockerfile: python/Dockerfile
     depends_on:
+      - ftpd
       - selenium
     volumes:
       - ./test/acceptance:/screenshots
+
+  ftpd:
+    image: stilliard/pure-ftpd
+    volumes:
+      - ./pure-ftpd:/etc/pure-ftpd/passwd
 
   selenium:
     image: selenium/standalone-firefox:3.9.1
