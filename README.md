@@ -1,4 +1,4 @@
-# Insecure Links Highlighter
+# Insecure Links Highlighter [![Build Status](https://travis-ci.org/l0b0/insecure-links-highlighter.svg?branch=master)](https://travis-ci.org/l0b0/insecure-links-highlighter)
 
 Browser add-on to highlight insecure links such as "http://example.org" and "ftp://example.org". Let's get nicely meta and see how the previous sentence is rendered with the add-on installed: ![Screenshot of above sentence](screenshots/README.png "Screenshot of above sentence")
 
