@@ -1,6 +1,6 @@
 /*global describe, it, require*/
 
-var assert = require("assert"),
+let assert = require("assert"),
     highlight = require("../../highlight"),
     jsdom = require("jsdom");
 
