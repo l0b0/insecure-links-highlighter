@@ -23,8 +23,8 @@ test-unit: nodejs-docker-image
 	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/mocha test/unit
 
 test-lint: nodejs-docker-image python-docker-image
-	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/eslint highlight.js test/unit/test.js
-	docker-compose run --rm acceptance_tests pycodestyle --max-line-length=120 test/acceptance/test_local_file.py
+	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/eslint .
+	docker-compose run --rm acceptance_tests pycodestyle --max-line-length=120 .
 
 nodejs-docker-image:
 	docker build --tag $(nodejs_docker_image) --file nodejs/Dockerfile .
