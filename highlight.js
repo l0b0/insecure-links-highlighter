@@ -13,12 +13,12 @@ You should have received a copy of the GNU General Public License along with thi
 (function (exports) {
     "use strict";
 
-    var protocolPrefixRegex = new RegExp("^[a-z]+://", "i");
+    let protocolPrefixRegex = new RegExp("^[a-z]+://", "i");
 
     if (typeof document !== "undefined") {
         exports.protocol = location.protocol;
         processNode(document);
-        var observer = new MutationObserver(onMutation);
+        let observer = new MutationObserver(onMutation);
         observer.observe(document, {"attributes": true, "childList": true, "subtree": true});
     }
 
@@ -63,7 +63,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     function isSecureURL(url, protocol) {
         url = url.toLowerCase();
-        var urlProtocol = url.split(":", 1)[0];
+        let urlProtocol = url.split(":", 1)[0];
         if (["https", "mailto", "nntps", "sips", "tel"].includes(urlProtocol)) {
             return true;
         }
