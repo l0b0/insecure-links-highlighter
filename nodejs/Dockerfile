@@ -4,7 +4,7 @@ FROM node:9.5.0
 RUN mkdir /build
 WORKDIR /build
 
-COPY package.json .
+COPY package.json package-lock.json ./
 RUN npm install
 
 # Run
