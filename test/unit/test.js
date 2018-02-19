@@ -71,14 +71,14 @@ describe("highlight", function() {
 
     describe(highlight.isInsecureLink.name, function() {
         it("should consider links without @href as secure", function() {
-            var element = (new JSDOM()).window.document.createElement("a");
+            let element = (new JSDOM()).window.document.createElement("a");
             assert.ok(!highlight.isInsecureLink(element));
         });
     });
 
     describe(highlight.highlight.name, function() {
         it("should set the style of the element", function() {
-            var element = (new JSDOM()).window.document.createElement("a");
+            let element = (new JSDOM()).window.document.createElement("a");
             highlight.highlight(element);
             assert.equal(element.style.cssText, "border-color: red !important; border-style: solid !important;");
         });
