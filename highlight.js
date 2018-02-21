@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License along with thi
 (function (exports) {
     'use strict';
 
-    const protocolPrefixRegex = new RegExp('^[a-z]+://', 'i');
+    const protocolPrefixRegex = new RegExp('^[a-z]+://');
 
     // Known secure protocols handled by the browser
     const internalSecureProtocols = ['https'];
@@ -197,7 +197,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function hasExplicitProtocol(url) {
-        return protocolPrefixRegex.test(url);
+        return protocolPrefixRegex.test(url.toLowerCase());
     }
 
     function highlight(element) {
