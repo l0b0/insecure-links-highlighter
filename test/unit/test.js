@@ -92,12 +92,15 @@ describe("highlight", function() {
             assert.ok(highlight.hasExplicitProtocol("http://example.org"));
             assert.ok(highlight.hasExplicitProtocol("HTTP://example.org"));
         });
+
         it("should consider '//…' URLs as relative", function() {
             assert.ok(!highlight.hasExplicitProtocol("//example.org"));
         });
+
         it("should consider '/PATH' URLs as relative", function() {
             assert.ok(!highlight.hasExplicitProtocol("/example.html"));
         });
+
         it("should consider 'PATH' URLs as relative", function() {
             assert.ok(!highlight.hasExplicitProtocol("example.html"));
         });

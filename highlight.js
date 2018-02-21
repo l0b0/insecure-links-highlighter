@@ -23,6 +23,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     // Presumed secure, commonly handled by add-ons or externally
     let expectedExternallyHandledProtocols = ["tel"];
+
     let secureProtocols = [].concat(
         internalSecureProtocols,
         externallyHandledProtocols,
@@ -47,6 +48,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     function processAndObserveDocument() {
         processNode(document);
+
         let observer = new MutationObserver(onMutation);
         observer.observe(document, {"attributes": true, "childList": true, "subtree": true});
     }
@@ -93,9 +95,11 @@ You should have received a copy of the GNU General Public License along with thi
     function isSecureURL(url, protocol) {
         url = url.toLowerCase();
         let urlProtocol = url.split(":", 1)[0];
+
         if (secureProtocols.includes(urlProtocol)) {
             return true;
         }
+
         return !hasExplicitProtocol(url) && (protocol === "file:" || protocol === "https:");
     }
 
@@ -107,6 +111,7 @@ You should have received a copy of the GNU General Public License along with thi
         if (element.style.cssText !== "") {
             element.style.cssText += "; ";
         }
+
         element.style.cssText += `border-color: ${exports.configuration.borderColor} !important; border-style: solid !important;`;
     }
 
