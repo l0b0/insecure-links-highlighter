@@ -11,18 +11,18 @@ You should have received a copy of the GNU General Public License along with thi
 */
 
 (function (exports) {
-    "use strict";
+    'use strict';
 
-    let protocolPrefixRegex = new RegExp("^[a-z]+://", "i");
+    let protocolPrefixRegex = new RegExp('^[a-z]+://', 'i');
 
     // Known secure protocols handled by the browser
-    let internalSecureProtocols = ["https"];
+    let internalSecureProtocols = ['https'];
 
     // Presumed secure since they are handled externally (see network.protocol-handler.external.[protocol])
-    let externallyHandledProtocols = ["mailto", "news", "nntp", "snews"];
+    let externallyHandledProtocols = ['mailto', 'news', 'nntp', 'snews'];
 
     // Presumed secure, commonly handled by add-ons or externally
-    let expectedExternallyHandledProtocols = ["tel"];
+    let expectedExternallyHandledProtocols = ['tel'];
 
     let secureProtocols = [].concat(
         internalSecureProtocols,
@@ -30,10 +30,10 @@ You should have received a copy of the GNU General Public License along with thi
         expectedExternallyHandledProtocols
     );
 
-    if (typeof document !== "undefined") {
+    if (typeof document !== 'undefined') {
         exports.protocol = location.protocol;
 
-        if (typeof browser !== "undefined") {
+        if (typeof browser !== 'undefined') {
             browser.storage.local.get().then(onConfigurationRetrieved, onError);
         } else {
             exports.configuration = defaultOptions;
@@ -50,7 +50,7 @@ You should have received a copy of the GNU General Public License along with thi
         processNode(document);
 
         let observer = new MutationObserver(onMutation);
-        observer.observe(document, {"attributes": true, "childList": true, "subtree": true});
+        observer.observe(document, {'attributes': true, 'childList': true, 'subtree': true});
     }
 
     function onMutation(mutationRecords) {
@@ -58,9 +58,9 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function processMutationRecord(mutationRecord) {
-        if (mutationRecord.type === "childList") {
+        if (mutationRecord.type === 'childList') {
             mutationRecord.addedNodes.forEach(processMutationNode);
-        } else if (mutationRecord.type === "attributes" && mutationRecord.attributeName === "href") {
+        } else if (mutationRecord.type === 'attributes' && mutationRecord.attributeName === 'href') {
             highlightInsecureLink(mutationRecord.target);
         }
     }
@@ -79,7 +79,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function getLinks(node) {
-        return node.getElementsByTagName("a");
+        return node.getElementsByTagName('a');
     }
 
     function highlightInsecureLink(element) {
@@ -89,18 +89,18 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function isInsecureLink(element) {
-        return element.hasAttribute("href") && !isSecureURL(element.getAttribute("href"), exports.protocol);
+        return element.hasAttribute('href') && !isSecureURL(element.getAttribute('href'), exports.protocol);
     }
 
     function isSecureURL(url, protocol) {
         url = url.toLowerCase();
-        let urlProtocol = url.split(":", 1)[0];
+        let urlProtocol = url.split(':', 1)[0];
 
         if (secureProtocols.includes(urlProtocol)) {
             return true;
         }
 
-        return !hasExplicitProtocol(url) && (protocol === "file:" || protocol === "https:");
+        return !hasExplicitProtocol(url) && (protocol === 'file:' || protocol === 'https:');
     }
 
     function hasExplicitProtocol(url) {
@@ -108,8 +108,8 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function highlight(element) {
-        if (element.style.cssText !== "") {
-            element.style.cssText += "; ";
+        if (element.style.cssText !== '') {
+            element.style.cssText += '; ';
         }
 
         element.style.cssText += `border-color: ${exports.configuration.borderColor} !important; border-style: solid !important;`;

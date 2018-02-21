@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License along with thi
 function saveOptions(event) {
     event.preventDefault();
     browser.storage.local.set({
-        borderColor: document.querySelector("#borderColor").value
+        borderColor: document.querySelector('#borderColor').value
     });
 }
 
@@ -24,7 +24,7 @@ function restoreOptions() {
 
     function setOptions(options) {
         options = Object.assign({}, defaultOptions, options);
-        document.querySelector("#borderColor").value = options.borderColor;
+        document.querySelector('#borderColor').value = options.borderColor;
     }
 
     function onError(error) {
@@ -38,6 +38,6 @@ function setDefaultsAndRestoreOptions() {
 }
 
 
-document.addEventListener("DOMContentLoaded", restoreOptions);
-document.querySelector("form").addEventListener("submit", saveOptions);
-document.querySelector("form").addEventListener("reset", setDefaultsAndRestoreOptions);
+document.addEventListener('DOMContentLoaded', restoreOptions);
+document.querySelector('form').addEventListener('submit', saveOptions);
+document.querySelector('form').addEventListener('reset', setDefaultsAndRestoreOptions);
