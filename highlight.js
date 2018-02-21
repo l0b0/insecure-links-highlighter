@@ -13,106 +13,106 @@ You should have received a copy of the GNU General Public License along with thi
 (function (exports) {
     'use strict';
 
-    const protocolPrefixRegex = new RegExp('^[a-z]+://');
+    const protocolPrefixRegex = new RegExp('^[a-z]+://'),
 
-    // Known secure protocols handled by the browser
-    const internalSecureProtocols = ['https'];
+        // Known secure protocols handled by the browser
+        internalSecureProtocols = ['https'],
 
-    // Presumed secure since they are handled externally (see network.protocol-handler.external.[protocol])
-    const externallyHandledProtocols = ['mailto', 'news', 'nntp', 'snews'];
+        // Presumed secure since they are handled externally (see network.protocol-handler.external.[protocol])
+        externallyHandledProtocols = ['mailto', 'news', 'nntp', 'snews'],
 
-    // Presumed secure, commonly handled by add-ons or externally
-    const expectedExternallyHandledProtocols = ['tel'];
+        // Presumed secure, commonly handled by add-ons or externally
+        expectedExternallyHandledProtocols = ['tel'],
 
-    const secureProtocols = [].concat(
-        internalSecureProtocols,
-        externallyHandledProtocols,
-        expectedExternallyHandledProtocols
-    );
+        secureProtocols = [].concat(
+            internalSecureProtocols,
+            externallyHandledProtocols,
+            expectedExternallyHandledProtocols
+        ),
 
-    const eventHandlerAttributes = [
-        'onabort',
-        // 'onafterprint',
-        // 'onauxclick',
-        // 'onbeforeprint',
-        // 'onbeforeunload',
-        'onblur',
-        // 'oncancel',
-        'oncanplay',
-        'oncanplaythrough',
-        'onchange',
-        'onclick',
-        'onclose',
-        'oncontextmenu',
-        // 'oncopy',
-        // 'oncuechange',
-        'oncut',
-        'ondblclick',
-        'ondrag',
-        'ondragend',
-        'ondragenter',
-        'ondragexit',
-        'ondragleave',
-        'ondragover',
-        'ondragstart',
-        'ondrop',
-        'ondurationchange',
-        'onemptied',
-        'onended',
-        'onerror',
-        'onfocus',
-        // 'onhashchange',
-        'oninput',
-        'oninvalid',
-        'onkeydown',
-        'onkeypress',
-        'onkeyup',
-        // 'onlanguagechange',
-        'onload',
-        'onloadeddata',
-        'onloadedmetadata',
-        'onloadend',
-        'onloadstart',
-        // 'onmessage',
-        // 'onmessageerror',
-        'onmousedown',
-        'onmouseenter',
-        'onmouseleave',
-        'onmousemove',
-        'onmouseout',
-        'onmouseover',
-        'onmouseup',
-        // 'onoffline',
-        // 'ononline',
-        // 'onpagehide',
-        // 'onpageshow',
-        'onpaste',
-        'onpause',
-        'onplay',
-        'onplaying',
-        // 'onpopstate',
-        'onprogress',
-        'onratechange',
-        // 'onrejectionhandled',
-        'onreset',
-        'onresize',
-        'onscroll',
-        // 'onsecuritypolicyviolation',
-        'onseeked',
-        'onseeking',
-        'onselect',
-        'onstalled',
-        // 'onstorage',
-        'onsubmit',
-        'onsuspend',
-        'ontimeupdate',
-        'ontoggle',
-        // 'onunhandledrejection',
-        // 'onunload',
-        'onvolumechange',
-        'onwaiting',
-        'onwheel',
-    ];
+        eventHandlerAttributes = [
+            'onabort',
+            // 'onafterprint',
+            // 'onauxclick',
+            // 'onbeforeprint',
+            // 'onbeforeunload',
+            'onblur',
+            // 'oncancel',
+            'oncanplay',
+            'oncanplaythrough',
+            'onchange',
+            'onclick',
+            'onclose',
+            'oncontextmenu',
+            // 'oncopy',
+            // 'oncuechange',
+            'oncut',
+            'ondblclick',
+            'ondrag',
+            'ondragend',
+            'ondragenter',
+            'ondragexit',
+            'ondragleave',
+            'ondragover',
+            'ondragstart',
+            'ondrop',
+            'ondurationchange',
+            'onemptied',
+            'onended',
+            'onerror',
+            'onfocus',
+            // 'onhashchange',
+            'oninput',
+            'oninvalid',
+            'onkeydown',
+            'onkeypress',
+            'onkeyup',
+            // 'onlanguagechange',
+            'onload',
+            'onloadeddata',
+            'onloadedmetadata',
+            'onloadend',
+            'onloadstart',
+            // 'onmessage',
+            // 'onmessageerror',
+            'onmousedown',
+            'onmouseenter',
+            'onmouseleave',
+            'onmousemove',
+            'onmouseout',
+            'onmouseover',
+            'onmouseup',
+            // 'onoffline',
+            // 'ononline',
+            // 'onpagehide',
+            // 'onpageshow',
+            'onpaste',
+            'onpause',
+            'onplay',
+            'onplaying',
+            // 'onpopstate',
+            'onprogress',
+            'onratechange',
+            // 'onrejectionhandled',
+            'onreset',
+            'onresize',
+            'onscroll',
+            // 'onsecuritypolicyviolation',
+            'onseeked',
+            'onseeking',
+            'onselect',
+            'onstalled',
+            // 'onstorage',
+            'onsubmit',
+            'onsuspend',
+            'ontimeupdate',
+            'ontoggle',
+            // 'onunhandledrejection',
+            // 'onunload',
+            'onvolumechange',
+            'onwaiting',
+            'onwheel',
+        ];
 
     if (typeof document !== 'undefined') {
         exports.protocol = location.protocol;
@@ -131,9 +131,10 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function processAndObserveDocument() {
+        const observer = new MutationObserver(onMutation);
+
         processNode(document);
 
-        const observer = new MutationObserver(onMutation);
         observer.observe(document, {'attributes': true, 'childList': true, 'subtree': true});
     }
 
