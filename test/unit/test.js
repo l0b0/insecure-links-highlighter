@@ -94,6 +94,9 @@ describe('highlight', function () {
     describe(highlight.hasExplicitProtocol.name, function () {
         it('should consider "http://…" URLs as absolute', function () {
             assert.ok(highlight.hasExplicitProtocol('http://example.org'));
+        });
+
+        it('should consider "HTTP://…" URLs as absolute', function () {
             assert.ok(highlight.hasExplicitProtocol('HTTP://example.org'));
         });
 
