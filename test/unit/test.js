@@ -1,10 +1,8 @@
 /*global describe, it, require, xit*/
 
-let assert = require('assert'),
+const assert = require('assert'),
     highlight = require('../../highlight'),
-    jsdom = require('jsdom');
-
-const {JSDOM} = jsdom;
+    {JSDOM} = require('jsdom');
 
 describe('highlight', function () {
     'use strict';
@@ -71,12 +69,12 @@ describe('highlight', function () {
 
     describe(highlight.isInsecureLink.name, function () {
         it('should consider links without @href as secure', function () {
-            let element = (new JSDOM()).window.document.createElement('a');
+            const element = (new JSDOM()).window.document.createElement('a');
             assert.ok(!highlight.isInsecureLink(element));
         });
 
         xit('should consider links with @onclick as insecure', function () {
-            let element = (new JSDOM()).window.document.createElement('a');
+            const element = (new JSDOM()).window.document.createElement('a');
             element.onclick = 'location="http://example.org"';
             assert.ok(highlight.isInsecureLink(element));
         });
@@ -84,7 +82,7 @@ describe('highlight', function () {
 
     describe(highlight.highlight.name, function () {
         it('should set the style of the element', function () {
-            let element = (new JSDOM()).window.document.createElement('a');
+            const element = (new JSDOM()).window.document.createElement('a');
             highlight.configuration = {
                 'borderColor': 'red'
             };

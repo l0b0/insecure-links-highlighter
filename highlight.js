@@ -13,24 +13,24 @@ You should have received a copy of the GNU General Public License along with thi
 (function (exports) {
     'use strict';
 
-    let protocolPrefixRegex = new RegExp('^[a-z]+://', 'i');
+    const protocolPrefixRegex = new RegExp('^[a-z]+://', 'i');
 
     // Known secure protocols handled by the browser
-    let internalSecureProtocols = ['https'];
+    const internalSecureProtocols = ['https'];
 
     // Presumed secure since they are handled externally (see network.protocol-handler.external.[protocol])
-    let externallyHandledProtocols = ['mailto', 'news', 'nntp', 'snews'];
+    const externallyHandledProtocols = ['mailto', 'news', 'nntp', 'snews'];
 
     // Presumed secure, commonly handled by add-ons or externally
-    let expectedExternallyHandledProtocols = ['tel'];
+    const expectedExternallyHandledProtocols = ['tel'];
 
-    let secureProtocols = [].concat(
+    const secureProtocols = [].concat(
         internalSecureProtocols,
         externallyHandledProtocols,
         expectedExternallyHandledProtocols
     );
 
-    let eventHandlerAttributes = [
+    const eventHandlerAttributes = [
         'onabort',
         // 'onafterprint',
         // 'onauxclick',
@@ -133,7 +133,7 @@ You should have received a copy of the GNU General Public License along with thi
     function processAndObserveDocument() {
         processNode(document);
 
-        let observer = new MutationObserver(onMutation);
+        const observer = new MutationObserver(onMutation);
         observer.observe(document, {'attributes': true, 'childList': true, 'subtree': true});
     }
 
@@ -174,7 +174,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     function isInsecureLink(element) {
         function hasEventHandler(handlerAttribute) {
-            let attribute = element[handlerAttribute];
+            const attribute = element[handlerAttribute];
             return attribute !== null && attribute !== undefined;
         }
 
@@ -187,7 +187,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     function isSecureURL(url, protocol) {
         url = url.toLowerCase();
-        let urlProtocol = url.split(':', 1)[0];
+        const urlProtocol = url.split(':', 1)[0];
 
         if (secureProtocols.includes(urlProtocol)) {
             return true;
