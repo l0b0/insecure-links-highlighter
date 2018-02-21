@@ -1,4 +1,4 @@
-/*global describe, it, require*/
+/*global describe, it, require, xit*/
 
 let assert = require('assert'),
     highlight = require('../../highlight'),
@@ -73,6 +73,12 @@ describe('highlight', function () {
         it('should consider links without @href as secure', function () {
             let element = (new JSDOM()).window.document.createElement('a');
             assert.ok(!highlight.isInsecureLink(element));
+        });
+
+        xit('should consider links with @onclick as insecure', function () {
+            let element = (new JSDOM()).window.document.createElement('a');
+            element.onclick = 'location="http://example.org"';
+            assert.ok(highlight.isInsecureLink(element));
         });
     });
 

@@ -30,6 +30,90 @@ You should have received a copy of the GNU General Public License along with thi
         expectedExternallyHandledProtocols
     );
 
+    let eventHandlerAttributes = [
+        'onabort',
+        // 'onafterprint',
+        // 'onauxclick',
+        // 'onbeforeprint',
+        // 'onbeforeunload',
+        'onblur',
+        // 'oncancel',
+        'oncanplay',
+        'oncanplaythrough',
+        'onchange',
+        'onclick',
+        'onclose',
+        'oncontextmenu',
+        // 'oncopy',
+        // 'oncuechange',
+        'oncut',
+        'ondblclick',
+        'ondrag',
+        'ondragend',
+        'ondragenter',
+        'ondragexit',
+        'ondragleave',
+        'ondragover',
+        'ondragstart',
+        'ondrop',
+        'ondurationchange',
+        'onemptied',
+        'onended',
+        'onerror',
+        'onfocus',
+        // 'onhashchange',
+        'oninput',
+        'oninvalid',
+        'onkeydown',
+        'onkeypress',
+        'onkeyup',
+        // 'onlanguagechange',
+        'onload',
+        'onloadeddata',
+        'onloadedmetadata',
+        'onloadend',
+        'onloadstart',
+        // 'onmessage',
+        // 'onmessageerror',
+        'onmousedown',
+        'onmouseenter',
+        'onmouseleave',
+        'onmousemove',
+        'onmouseout',
+        'onmouseover',
+        'onmouseup',
+        // 'onoffline',
+        // 'ononline',
+        // 'onpagehide',
+        // 'onpageshow',
+        'onpaste',
+        'onpause',
+        'onplay',
+        'onplaying',
+        // 'onpopstate',
+        'onprogress',
+        'onratechange',
+        // 'onrejectionhandled',
+        'onreset',
+        'onresize',
+        'onscroll',
+        // 'onsecuritypolicyviolation',
+        'onseeked',
+        'onseeking',
+        'onselect',
+        'onstalled',
+        // 'onstorage',
+        'onsubmit',
+        'onsuspend',
+        'ontimeupdate',
+        'ontoggle',
+        // 'onunhandledrejection',
+        // 'onunload',
+        'onvolumechange',
+        'onwaiting',
+        'onwheel',
+    ];
+
     if (typeof document !== 'undefined') {
         exports.protocol = location.protocol;
 
@@ -89,6 +173,15 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function isInsecureLink(element) {
+        function hasEventHandler(handlerAttribute) {
+            let attribute = element[handlerAttribute];
+            return attribute !== null && attribute !== undefined;
+        }
+
+        if (eventHandlerAttributes.some(hasEventHandler)) {
+            return true;
+        }
+
         return element.hasAttribute('href') && !isSecureURL(element.getAttribute('href'), exports.protocol);
     }
 

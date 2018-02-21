@@ -28,3 +28,7 @@ class TestLocalFile(HighlighterTestCase):
         self.assert_not_highlighted(link)
         ActionChains(self.driver).move_to_element(link).perform()
         self.assert_highlighted(link)
+
+    def test_should_highlight_url_with_onmousedown_handler(self):
+        link = self.driver.find_element_by_link_text('modify on mouse down')
+        self.assert_highlighted(link)
