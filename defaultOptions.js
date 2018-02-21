@@ -12,6 +12,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 (function (exports) {
     exports.defaultOptions = {
-        "borderColor": "red"
+        "borderColor": "red",
     };
 }(this));
