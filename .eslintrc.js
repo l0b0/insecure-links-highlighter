@@ -5,6 +5,10 @@ module.exports = {
         "es6": true
     },
     "extends": "eslint:recommended",
+    "globals": {
+        "browser": true,
+        "defaultOptions": true,
+    },
     "rules": {
         "indent": [
             "error",

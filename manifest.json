@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.12",
+  "version": "1.13",
   "author": "Victor Engmark",
   "homepage_url": "https://github.com/l0b0/insecure-links-highlighter",
   "content_scripts": [
@@ -11,10 +11,17 @@
         "<all_urls>"
       ],
       "js": [
+        "defaultOptions.js",
         "highlight.js"
       ],
       "all_frames": true
     }
+  ],
+  "options_ui": {
+    "page": "options.html"
+  },
+  "permissions": [
+    "storage"
   ],
   "icons": {
     "48": "icons/48.png",

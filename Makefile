@@ -9,7 +9,7 @@ XML_EXTENSIONS = iml xml
 
 build: $(extension_file)
 
-$(extension_file): highlight.js icons _locales manifest.json
+$(extension_file): defaultOptions.js highlight.js icons _locales manifest.json options.html options.js
 	zip -r -FS $@ $^
 
 changelog: .git/HEAD ruby-docker-image
