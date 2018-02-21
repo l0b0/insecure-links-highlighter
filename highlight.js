@@ -186,8 +186,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function isSecureURL(url, protocol) {
-        url = url.toLowerCase();
-        const urlProtocol = url.split(':', 1)[0];
+        const urlProtocol = url.split(':', 1)[0].toLowerCase();
 
         if (secureProtocols.includes(urlProtocol)) {
             return true;
