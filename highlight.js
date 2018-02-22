@@ -150,16 +150,8 @@ You should have received a copy of the GNU General Public License along with thi
         }
     }
 
-    function onElementMutation(mutationRecords) {
-        mutationRecords.forEach(processElementMutationRecord);
-    }
-
-    function processElementMutationRecord(mutationRecord) {
-        mutationRecord.addedNodes.forEach(processMutationNode);
-    }
-
-    function processMutationNode(node) {
-        processNode(node.parentElement);
+    function onElementMutation() {
+        processNode(document);
     }
 
     function processNode(node) {
