@@ -84,7 +84,7 @@ describe('highlight', function () {
         it('should set the style of the element', function () {
             const element = (new JSDOM()).window.document.createElement('a');
             highlight.configuration = {
-                borderColor: 'red'
+                borderColor: 'red',
             };
             highlight.highlight(element);
             assert.equal(element.style.cssText, 'border-color: red !important; border-style: solid !important;');

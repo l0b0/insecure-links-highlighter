@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License along with thi
 function saveOptions(event) {
     event.preventDefault();
     browser.storage.local.set({
-        borderColor: document.querySelector('#borderColor').value
+        borderColor: document.querySelector('#borderColor').value,
     });
 }
 
