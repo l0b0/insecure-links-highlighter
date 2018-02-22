@@ -22,6 +22,8 @@ Highlights insecure links such as:
 Dependencies:
 
 - GNU Make
+- ImageMagick
+- OptiPNG
 - Zip
 
 ## Test

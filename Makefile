@@ -7,10 +7,16 @@ extension_file = $(name).xpi
 
 XML_EXTENSIONS = iml xml
 
+icons = icons/48.png icons/96.png
+
 build: $(extension_file)
 
-$(extension_file): defaultOptions.js highlight.js icons _locales manifest.json options.html options.js
+$(extension_file): defaultOptions.js highlight.js $(icons) _locales manifest.json options.html options.js
 	zip -r -FS $@ $^
+
+icons/%.png: icons/icon.svg
+	convert -resize $*x$* $< $@
+	optipng -clobber $@
 
 changelog: .git/HEAD ruby-docker-image
 	docker run --env CHANGELOG_GITHUB_TOKEN=$(CHANGELOG_GITHUB_TOKEN) --rm $(ruby_docker_image) /changelog.sh
@@ -38,7 +44,7 @@ ruby-docker-image:
 	docker build --tag $(ruby_docker_image) --file ruby/Dockerfile .
 
 clean:
-	$(RM) $(name).xpi test/acceptance/*.png
+	$(RM) $(name).xpi icons/*.png test/acceptance/*.png
 
 .PHONY: build changelog nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
 
