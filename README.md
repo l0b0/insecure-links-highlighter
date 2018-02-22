@@ -19,6 +19,11 @@ Highlights insecure links such as:
 
     make
 
+Dependencies:
+
+- GNU Make
+- Zip
+
 ## Test
 
     make test
@@ -53,7 +58,7 @@ Dependencies:
 
 - [GitHub token](https://github.com/settings/tokens/new). See the [GitHub Changelog Generator documentation](https://github.com/skywinder/github-changelog-generator#github-token) for details.
 - jq
-- Test dependencies (see above)
+- Build and test dependencies (see above)
 
 ## Dynamic links
 
