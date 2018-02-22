@@ -1,10 +1,15 @@
 # Insecure Links Highlighter [![Build Status](https://travis-ci.org/l0b0/insecure-links-highlighter.svg?branch=master)](https://travis-ci.org/l0b0/insecure-links-highlighter)
 
-Easily notice insecure links in Firefox by their bright red border. Highlights these types of links and more:
+Easily notice insecure links in Firefox by their bright red border:
 
-- <a href="http://example.org">http://example.org</a>
-- <a href="ftp://example.org">ftp://example.org</a>
-- <span onmousedown="location='http://example.org'">`on*` event handlers</span>
+[![Screenshot of insecure links](screenshots/links.png "Screenshot of insecure link")](screenshots/links.html)
+
+Highlights insecure links such as:
+
+- HTTP
+- FTP
+- [Dynamic links](#dynamic-links)
+- And more
 
 ## Download
 
@@ -49,6 +54,10 @@ Dependencies:
 - [GitHub token](https://github.com/settings/tokens/new). See the [GitHub Changelog Generator documentation](https://github.com/skywinder/github-changelog-generator#github-token) for details.
 - jq
 - Test dependencies (see above)
+
+## Dynamic links
+
+These are links which execute code when certain things happen, such as clicking a link. This does have legitimate and safe uses, but even the world's biggest search engine uses it sneakily: when you move the mouse over a link anywhere on the web, Firefox displays the URL it expects to go to when that link is clicked. But dynamic links often go to a different page first, for example to keep track of which links you have clicked. Seeing the wrong link in the browser therefore gives a false sense of privacy and security.
 
 ## [License](LICENSE)
 
