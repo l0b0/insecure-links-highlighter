@@ -150,8 +150,46 @@ You should have received a copy of the GNU General Public License along with thi
         }
     }
 
-    function onElementMutation() {
-        processNode(document);
+    function onElementMutation(mutationRecords) {
+        const addedElementsList = mutationRecords.map(mutationRecordElements);
+        const addedElements = [].concat.apply([], addedElementsList);
+
+        processNode(commonAncestor(addedElements));
+    }
+
+    function mutationRecordElements(mutationRecord) {
+        return Array.from(mutationRecord.addedNodes).filter(isElement);
+    }
+
+    function isElement(node) {
+        return node instanceof Element;
+    }
+
+    function commonAncestor(elements) {
+        const ancestorLists = elements.map(ancestors);
+        let commonAncestorIndex = 0,
+            commonAncestor;
+
+        function hasNextAncestor(ancestors) {
+            return ancestors[commonAncestorIndex + 1] === commonAncestor;
+        }
+
+        do {
+            commonAncestor = ancestorLists[0][commonAncestorIndex];
+            commonAncestorIndex++;
+        } while (ancestorLists.every(hasNextAncestor));
+
+        return commonAncestor;
+    }
+
+    function ancestors(element) {
+        let ancestors = [element];
+        while (element.parentElement !== null) {
+            let parent = element.parentElement;
+            ancestors.unshift(parent);
+            element = parent;
+        }
+        return ancestors;
     }
 
     function processNode(node) {
@@ -210,6 +248,8 @@ You should have received a copy of the GNU General Public License along with thi
         throw error;
     }
 
+    exports.ancestors = ancestors;
+    exports.commonAncestor = commonAncestor;
     exports.hasExplicitProtocol = hasExplicitProtocol;
     exports.isInsecureLink = isInsecureLink;
     exports.isSecureURL = isSecureURL;

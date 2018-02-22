@@ -122,4 +122,56 @@ describe('highlight', function () {
             assert.ok(!highlight.hasExplicitProtocol('example.html'));
         });
     });
+
+    describe(highlight.commonAncestor.name, function () {
+        it('should return the parent of two sibling elements', function () {
+            const document = (new JSDOM()).window.document;
+
+            const parent = document.createElement('parent');
+
+            const firstChild = document.createElement('child');
+            const secondChild = document.createElement('child');
+
+            parent.appendChild(firstChild);
+            parent.appendChild(secondChild);
+
+            assert.equal(parent, highlight.commonAncestor([firstChild, secondChild]));
+        });
+
+        it('should return the parent from a parent and child', function () {
+            const document = (new JSDOM()).window.document;
+
+            const parent = document.createElement('parent');
+
+            const child = document.createElement('child');
+
+            parent.appendChild(child);
+
+            assert.equal(parent, highlight.commonAncestor([parent, child]));
+        });
+    });
+
+    describe(highlight.ancestors.name, function () {
+        it('should return the element if it has no parent', function () {
+            const document = (new JSDOM()).window.document;
+
+            const element = document.createElement('element');
+
+            assert.deepEqual([element], highlight.ancestors(element));
+        });
+
+        it('should return the parent and the element, oldest first', function () {
+            const document = (new JSDOM()).window.document;
+
+            const parent = document.createElement('parent');
+
+            const firstChild = document.createElement('child');
+            const secondChild = document.createElement('child');
+
+            parent.appendChild(firstChild);
+            parent.appendChild(secondChild);
+
+            assert.deepEqual([parent, firstChild], highlight.ancestors(firstChild));
+        });
+    });
 });
