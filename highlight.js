@@ -131,23 +131,31 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function processAndObserveDocument() {
-        const observer = new MutationObserver(onMutation);
+        const attributeObserver = new MutationObserver(onAttributeMutation),
+            elementObserver = new MutationObserver(onElementMutation);
 
         processNode(document);
 
-        observer.observe(document, {'attributes': true, 'childList': true, 'subtree': true});
+        attributeObserver.observe(document, {'attributes': true, 'subtree': true});
+        elementObserver.observe(document, {'childList': true, 'subtree': true});
     }
 
-    function onMutation(mutationRecords) {
-        mutationRecords.forEach(processMutationRecord);
+    function onAttributeMutation(mutationRecords) {
+        mutationRecords.forEach(processAttributeMutationRecord);
     }
 
-    function processMutationRecord(mutationRecord) {
-        if (mutationRecord.type === 'childList') {
-            mutationRecord.addedNodes.forEach(processMutationNode);
-        } else if (mutationRecord.type === 'attributes' && mutationRecord.attributeName === 'href') {
+    function processAttributeMutationRecord(mutationRecord) {
+        if (mutationRecord.attributeName === 'href') {
             highlightInsecureLink(mutationRecord.target);
         }
+    }
+
+    function onElementMutation(mutationRecords) {
+        mutationRecords.forEach(processElementMutationRecord);
+    }
+
+    function processElementMutationRecord(mutationRecord) {
+        mutationRecord.addedNodes.forEach(processMutationNode);
     }
 
     function processMutationNode(node) {
