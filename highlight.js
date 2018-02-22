@@ -179,7 +179,7 @@ You should have received a copy of the GNU General Public License along with thi
             return attribute !== null && attribute !== undefined;
         }
 
-        if (eventHandlerAttributes.some(hasEventHandler)) {
+        if (exports.configuration.elementsWithEventHandlersAreInsecure && eventHandlerAttributes.some(hasEventHandler)) {
             return true;
         }
 

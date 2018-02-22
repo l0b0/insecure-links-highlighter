@@ -1,4 +1,4 @@
-/*global describe, it, require, xit*/
+/*global beforeEach, describe, it, require, xit*/
 
 const assert = require('assert'),
     defaultOptions = require('../../defaultOptions').defaultOptions,
@@ -7,6 +7,10 @@ const assert = require('assert'),
 
 describe('highlight', function () {
     'use strict';
+
+    beforeEach(function () {
+        highlight.configuration = defaultOptions;
+    });
 
     describe(highlight.isSecureURL.name, function () {
         it('should return true for an HTTPS URL on an HTTPS page', function () {
@@ -74,10 +78,17 @@ describe('highlight', function () {
             assert.ok(!highlight.isInsecureLink(element));
         });
 
-        xit('should consider links with @onclick as insecure', function () {
+        xit('should consider links with @onclick as insecure by default', function () {
             const element = (new JSDOM()).window.document.createElement('a');
             element.onclick = 'location="http://example.org"';
             assert.ok(highlight.isInsecureLink(element));
+        });
+
+        xit('should consider links with @onclick as secure if configured as such', function () {
+            const element = (new JSDOM()).window.document.createElement('a');
+            element.onclick = 'location="http://example.org"';
+            highlight.configuration = Object.assign({}, defaultOptions, {elementsWithEventHandlersAreInsecure: false});
+            assert.ok(!highlight.isInsecureLink(element));
         });
     });
 
