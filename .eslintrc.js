@@ -1,16 +1,16 @@
 module.exports = {
-    'env': {
-        'browser': true,
-        'node': true,
-        'es6': true
+    env: {
+        browser: true,
+        node: true,
+        es6: true
     },
-    'extends': 'eslint:recommended',
-    'globals': {
-        'browser': true,
-        'defaultOptions': true,
+    extends: 'eslint:recommended',
+    globals: {
+        browser: true,
+        defaultOptions: true,
     },
-    'rules': {
-        'indent': [
+    rules: {
+        indent: [
             'error',
             4
         ],
@@ -18,11 +18,11 @@ module.exports = {
             'error',
             'unix'
         ],
-        'quotes': [
+        quotes: [
             'error',
             'single'
         ],
-        'semi': [
+        semi: [
             'error',
             'always'
         ]
