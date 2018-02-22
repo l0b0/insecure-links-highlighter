@@ -8,7 +8,7 @@ Easily notice insecure links in Firefox by their bright red border. Highlights t
 
 ## Download
 
-[Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/insecure-links-highlighter/?src=userprofile)
+[Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/insecure-links-highlighter/)
 
 ## Build
 
