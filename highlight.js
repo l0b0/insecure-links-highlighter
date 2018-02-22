@@ -114,17 +114,6 @@ You should have received a copy of the GNU General Public License along with thi
             'onwheel',
         ];
 
-    if (typeof document !== 'undefined') {
-        exports.protocol = location.protocol;
-
-        if (typeof browser !== 'undefined') {
-            browser.storage.local.get().then(onConfigurationRetrieved, onError);
-        } else {
-            exports.configuration = defaultOptions;
-            processAndObserveDocument();
-        }
-    }
-
     function onConfigurationRetrieved(items) {
         exports.configuration = Object.assign({}, defaultOptions, items);
         processAndObserveDocument();
@@ -255,4 +244,15 @@ You should have received a copy of the GNU General Public License along with thi
     exports.isInsecureLink = isInsecureLink;
     exports.isSecureURL = isSecureURL;
     exports.highlight = highlight;
+
+    if (typeof document !== 'undefined') {
+        exports.protocol = location.protocol;
+
+        if (typeof browser !== 'undefined') {
+            browser.storage.local.get().then(onConfigurationRetrieved, onError);
+        } else {
+            exports.configuration = defaultOptions;
+            processAndObserveDocument();
+        }
+    }
 }(this));
