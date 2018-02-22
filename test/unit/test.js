@@ -1,6 +1,7 @@
 /*global describe, it, require, xit*/
 
 const assert = require('assert'),
+    defaultOptions = require('../../defaultOptions').defaultOptions,
     highlight = require('../../highlight'),
     {JSDOM} = require('jsdom');
 
@@ -83,9 +84,7 @@ describe('highlight', function () {
     describe(highlight.highlight.name, function () {
         it('should set the style of the element', function () {
             const element = (new JSDOM()).window.document.createElement('a');
-            highlight.configuration = {
-                borderColor: 'red',
-            };
+            highlight.configuration = defaultOptions;
             highlight.highlight(element);
             assert.equal(element.style.cssText, 'border-color: red !important; border-style: solid !important;');
         });
