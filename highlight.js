@@ -136,8 +136,8 @@ You should have received a copy of the GNU General Public License along with thi
 
         processNode(document);
 
-        attributeObserver.observe(document, {'attributes': true, 'subtree': true});
-        elementObserver.observe(document, {'childList': true, 'subtree': true});
+        attributeObserver.observe(document.body, {'attributes': true, 'subtree': true});
+        elementObserver.observe(document.body, {'childList': true, 'subtree': true});
     }
 
     function onAttributeMutation(mutationRecords) {
@@ -159,9 +159,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function processMutationNode(node) {
-        if (node instanceof Element) {
-            processNode(node.parentElement);
-        }
+        processNode(node.parentElement);
     }
 
     function processNode(node) {
