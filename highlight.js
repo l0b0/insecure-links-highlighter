@@ -176,7 +176,7 @@ You should have received a copy of the GNU General Public License along with thi
     function isInsecureLink(element) {
         function hasEventHandler(handlerAttribute) {
             const attribute = element[handlerAttribute];
-            return attribute !== null && attribute !== undefined;
+            return attribute !== undefined && attribute !== null;
         }
 
         if (exports.configuration.elementsWithEventHandlersAreInsecure && eventHandlerAttributes.some(hasEventHandler)) {
