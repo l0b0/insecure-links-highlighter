@@ -1,6 +1,10 @@
 # Insecure Links Highlighter [![Build Status](https://travis-ci.org/l0b0/insecure-links-highlighter.svg?branch=master)](https://travis-ci.org/l0b0/insecure-links-highlighter)
 
-Browser add-on to highlight insecure links such as "http://example.org", "ftp://example.org" and suspicious elements with `on*` event handlers. Let's get nicely meta and see how the previous sentence is rendered with the add-on installed: ![Screenshot of above sentence](screenshots/README.png "Screenshot of above sentence")
+Easily notice insecure links in Firefox by their bright red border. Highlights these types of links and more:
+
+- <a href="http://example.org">http://example.org</a>
+- <a href="ftp://example.org">ftp://example.org</a>
+- <span onmousedown="location='http://example.org'">`on*` event handlers</span>
 
 ## Download
 
