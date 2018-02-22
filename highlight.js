@@ -241,6 +241,7 @@ You should have received a copy of the GNU General Public License along with thi
             element.style.cssText += '; ';
         }
 
+        element.classList.add(exports.configuration.class);
         element.style.cssText += `border-color: ${exports.configuration.borderColor} !important; border-style: solid !important;`;
     }
 

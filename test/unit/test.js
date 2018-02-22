@@ -93,6 +93,13 @@ describe('highlight', function () {
     });
 
     describe(highlight.highlight.name, function () {
+        it('should add a class to the element', function () {
+            const element = (new JSDOM()).window.document.createElement('a');
+            highlight.configuration = defaultOptions;
+            highlight.highlight(element);
+            assert.ok(element.classList.contains(highlight.configuration.class));
+        });
+
         it('should set the style of the element', function () {
             const element = (new JSDOM()).window.document.createElement('a');
             highlight.configuration = defaultOptions;
