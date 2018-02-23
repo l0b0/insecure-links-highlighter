@@ -1,6 +1,6 @@
 import unittest
 
-from test.acceptance.highlighter_test_case import HighlighterTestCase
+from highlighter_test_case import HighlighterTestCase
 
 
 class TestFTP(HighlighterTestCase):

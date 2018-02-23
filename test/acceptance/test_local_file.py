@@ -1,6 +1,6 @@
 from selenium.webdriver.common.action_chains import ActionChains
 
-from test.acceptance.highlighter_test_case import HighlighterTestCase
+from highlighter_test_case import HighlighterTestCase
 
 
 class TestLocalFile(HighlighterTestCase):
