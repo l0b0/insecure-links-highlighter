@@ -34,6 +34,7 @@ test-lint: nodejs-docker-image python-docker-image
 	docker-compose run --rm acceptance_tests pycodestyle --max-line-length=120 .
 	docker-compose run --rm acceptance_tests \
 		mypy \
+			--disallow-any-explicit \
 			--follow-imports=silent \
 			--ignore-missing-imports \
 			--warn-incomplete-stub \
