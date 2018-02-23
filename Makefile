@@ -61,7 +61,7 @@ ruby-docker-image:
 	docker build --tag $(ruby_docker_image) --file ruby/Dockerfile .
 
 clean:
-	$(RM) $(name).xpi icons/*.png test/acceptance/*.png
+	$(RM) $(extension_file) icons/*.png test/acceptance/*.png
 
 .PHONY: build changelog nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
 
