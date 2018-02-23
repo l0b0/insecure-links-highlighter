@@ -16,7 +16,8 @@ $(extension_file): defaultOptions.js highlight.js $(icons) _locales manifest.jso
 
 icons/%.png: icons/icon.svg
 	convert -resize $*x$* $< $@
-	optipng -clobber $@
+	optipng -out /tmp/icon.png $@
+	mv /tmp/icon.png $@
 
 changelog: .git/HEAD ruby-docker-image
 	docker run --env CHANGELOG_GITHUB_TOKEN=$(CHANGELOG_GITHUB_TOKEN) --rm $(ruby_docker_image) /changelog.sh
