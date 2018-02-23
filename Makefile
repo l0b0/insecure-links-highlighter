@@ -36,6 +36,7 @@ test-lint: nodejs-docker-image python-docker-image
 		mypy \
 			--disallow-any-explicit \
 			--disallow-any-generics \
+			--disallow-incomplete-defs \
 			--disallow-subclassing-any \
 			--disallow-untyped-calls \
 			--disallow-untyped-decorators \
