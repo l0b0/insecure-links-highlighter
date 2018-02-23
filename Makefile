@@ -36,6 +36,7 @@ test-lint: nodejs-docker-image python-docker-image
 		mypy \
 			--disallow-any-explicit \
 			--disallow-any-generics \
+			--disallow-subclassing-any \
 			--follow-imports=silent \
 			--ignore-missing-imports \
 			--warn-incomplete-stub \
