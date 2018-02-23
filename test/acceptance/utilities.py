@@ -4,4 +4,4 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 def get_classes(element: WebElement) -> List[str]:
-    return element.get_attribute('class').split()
+    return str.split(element.get_attribute('class'))

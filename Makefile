@@ -32,6 +32,16 @@ test-unit: nodejs-docker-image
 test-lint: nodejs-docker-image python-docker-image
 	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/eslint .
 	docker-compose run --rm acceptance_tests pycodestyle --max-line-length=120 .
+	docker-compose run --rm acceptance_tests \
+		mypy \
+			--follow-imports=silent \
+			--ignore-missing-imports \
+			--warn-incomplete-stub \
+			--warn-redundant-casts \
+			--warn-return-any \
+			--warn-unused-configs \
+			--warn-unused-ignores \
+			test/acceptance
 
 nodejs-docker-image:
 	docker build --tag $(nodejs_docker_image) --file nodejs/Dockerfile .
