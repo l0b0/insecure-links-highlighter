@@ -24,7 +24,6 @@ changelog: .git/HEAD ruby-docker-image
 test: test-acceptance test-lint test-unit
 
 test-acceptance: python-docker-image
-	docker-compose down
 	docker-compose run --rm acceptance_tests python -m unittest discover test/acceptance
 
 test-unit: nodejs-docker-image
@@ -38,6 +37,7 @@ nodejs-docker-image:
 	docker build --tag $(nodejs_docker_image) --file nodejs/Dockerfile .
 
 python-docker-image:
+	docker-compose down
 	docker-compose build
 
 ruby-docker-image:
