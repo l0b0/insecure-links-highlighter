@@ -37,6 +37,7 @@ test-lint: nodejs-docker-image python-docker-image
 			--disallow-any-explicit \
 			--disallow-any-generics \
 			--disallow-subclassing-any \
+			--disallow-untyped-calls \
 			--disallow-untyped-decorators \
 			--disallow-untyped-defs \
 			--follow-imports=silent \
