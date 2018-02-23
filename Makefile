@@ -35,6 +35,7 @@ test-lint: nodejs-docker-image python-docker-image
 	docker-compose run --rm acceptance_tests \
 		mypy \
 			--disallow-any-explicit \
+			--disallow-any-generics \
 			--follow-imports=silent \
 			--ignore-missing-imports \
 			--warn-incomplete-stub \
