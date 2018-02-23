@@ -7,7 +7,7 @@ class TestFTP(HighlighterTestCase):
     def setUp(self):
         self.driver.get('ftp://user:password@ftpd')
 
-    @unittest.skip("Need to install browser add-on")
+    @unittest.expectedFailure
     def test_should_highlight_ftp_url(self):
         link = self.driver.find_element_by_link_text('Up to higher level directory')
         self.assert_highlighted(link)
