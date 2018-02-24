@@ -25,7 +25,7 @@ changelog: .git/HEAD ruby-docker-image
 test: test-acceptance test-lint test-unit
 
 test-acceptance: acceptance-test-image
-	docker-compose run --rm acceptance_tests gradle test
+	docker-compose run --rm acceptance_tests gradle --info test
 
 test-unit: nodejs-docker-image
 	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/mocha test/unit
