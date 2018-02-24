@@ -24,37 +24,19 @@ changelog: .git/HEAD ruby-docker-image
 
 test: test-acceptance test-lint test-unit
 
-test-acceptance: python-docker-image
-	docker-compose run --rm acceptance_tests python -m unittest discover test/acceptance
+test-acceptance: acceptance-test-image
+	docker-compose run --rm acceptance_tests gradle test
 
 test-unit: nodejs-docker-image
 	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/mocha test/unit
 
-test-lint: nodejs-docker-image python-docker-image
+test-lint: nodejs-docker-image acceptance-test-image
 	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/eslint .
-	docker-compose run --rm acceptance_tests pycodestyle --max-line-length=120 .
-	docker-compose run --rm acceptance_tests \
-		mypy \
-			--disallow-any-explicit \
-			--disallow-any-generics \
-			--disallow-incomplete-defs \
-			--disallow-subclassing-any \
-			--disallow-untyped-calls \
-			--disallow-untyped-decorators \
-			--disallow-untyped-defs \
-			--follow-imports=silent \
-			--ignore-missing-imports \
-			--warn-incomplete-stub \
-			--warn-redundant-casts \
-			--warn-return-any \
-			--warn-unused-configs \
-			--warn-unused-ignores \
-			test/acceptance
 
 nodejs-docker-image:
 	docker build --tag $(nodejs_docker_image) --file nodejs/Dockerfile .
 
-python-docker-image:
+acceptance-test-image:
 	docker-compose down
 	docker-compose build
 
@@ -64,6 +46,6 @@ ruby-docker-image:
 clean:
 	$(RM) $(extension_file) icons/*.png test/acceptance/*.png
 
-.PHONY: build changelog nodejs-docker-image python-docker-image test test-acceptance test-lint test-unit
+.PHONY: acceptance-test-image build changelog nodejs-docker-image test test-acceptance test-lint test-unit
 
 include make-includes/variables.mk make-includes/xml.mk

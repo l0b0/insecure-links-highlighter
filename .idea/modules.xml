@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/insecure-links-highlighter.iml" filepath="$PROJECT_DIR$/.idea/insecure-links-highlighter.iml"/>
-      <module fileurl="file://$PROJECT_DIR$/test/acceptance/acceptance.iml" filepath="$PROJECT_DIR$/test/acceptance/acceptance.iml"/>
-      <module fileurl="file://$PROJECT_DIR$/test/unit/unit.iml" filepath="$PROJECT_DIR$/test/unit/unit.iml"/>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/insecure-links-highlighter_main.iml" filepath="$PROJECT_DIR$/.idea/modules/insecure-links-highlighter_main.iml" group="insecure-links-highlighter"/>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/insecure-links-highlighter_test.iml" filepath="$PROJECT_DIR$/.idea/modules/insecure-links-highlighter_test.iml" group="insecure-links-highlighter"/>
     </modules>
   </component>
 </project>

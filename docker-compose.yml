@@ -1,15 +1,16 @@
-version: '3'
+version: '3.2'
 services:
 
   acceptance_tests:
-    build:
-      context: .
-      dockerfile: python/Dockerfile
+    image: gradle:jdk8
     depends_on:
       - ftpd
       - selenium
     volumes:
-      - ./test/acceptance:/screenshots
+      - type: bind
+        source: .
+        target: /home/gradle/project
+    working_dir: /home/gradle/project
 
   ftpd:
     image: stilliard/pure-ftpd
@@ -17,9 +18,10 @@ services:
       - ./pure-ftpd:/etc/pure-ftpd/passwd
 
   selenium:
-    image: selenium/standalone-firefox:3.9.1
+    image: selenium/standalone-firefox-debug:3.9.1
     ports:
       - "4444"
+      - "5900:5900"
     volumes:
       - /dev/shm:/dev/shm
       - .:/project

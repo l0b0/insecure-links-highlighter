@@ -1,0 +1,26 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    testCompile(
+            'junit:junit:4.12',
+            'org.seleniumhq.selenium:selenium-java:3.9.1',
+            'org.apache.directory.studio:org.apache.commons.io:2.4',
+    )
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
+}
