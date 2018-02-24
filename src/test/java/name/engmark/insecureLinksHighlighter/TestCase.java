@@ -27,7 +27,7 @@ public class TestCase {
     public TestWatcher watcher = new TestWatcher() {
         @Override
         protected void failed(Throwable testException, Description description) {
-            final String screenshotPath = String.format("/ome/gradle/project/build/%s.png", description.getMethodName());
+            final String screenshotPath = String.format("/home/gradle/project/build/%s.png", description.getMethodName());
             final File screenshotFile = new File(screenshotPath);
             final File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             try {
