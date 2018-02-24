@@ -46,6 +46,6 @@ ruby-docker-image:
 clean:
 	$(RM) $(extension_file) icons/*.png test/acceptance/*.png
 
-.PHONY: acceptance-test-image build changelog nodejs-docker-image test test-acceptance test-lint test-unit
+.PHONY: acceptance-test-image build changelog clean nodejs-docker-image ruby-docker-image test test-acceptance test-lint test-unit
 
 include make-includes/variables.mk make-includes/xml.mk
