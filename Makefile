@@ -24,7 +24,7 @@ changelog: .git/HEAD ruby-docker-image
 
 test: test-acceptance test-lint test-unit
 
-test-acceptance: acceptance-test-image
+test-acceptance: acceptance-test-image $(extension_file)
 	docker-compose run --rm acceptance_tests gradle --info test
 
 test-unit: nodejs-docker-image
