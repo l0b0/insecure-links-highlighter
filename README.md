@@ -69,3 +69,7 @@ These are links which execute code when certain things happen, such as clicking 
 ## [License](LICENSE)
 
 GNU GPL version 3 or later.
+
+## Acknowledgements
+
+Special thanks to [Catalyst](https://catalyst.net.nz/) for letting me work on this between projects.
