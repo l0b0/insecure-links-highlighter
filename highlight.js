@@ -115,7 +115,7 @@ You should have received a copy of the GNU General Public License along with thi
         ];
 
     function onConfigurationRetrieved(items) {
-        exports.configuration = Object.assign({}, defaultOptions, items);
+        exports.configuration = items;
         processAndObserveDocument();
     }
 
@@ -249,7 +249,7 @@ You should have received a copy of the GNU General Public License along with thi
         exports.protocol = location.protocol;
 
         if (typeof browser !== 'undefined') {
-            browser.storage.local.get().then(onConfigurationRetrieved, onError);
+            browser.storage.local.get(defaultOptions).then(onConfigurationRetrieved, onError);
         } else {
             exports.configuration = defaultOptions;
             processAndObserveDocument();

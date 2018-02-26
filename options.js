@@ -20,11 +20,10 @@ function saveOptions(event) {
 
 function restoreOptions() {
     browser.storage.local
-        .get()
+        .get(defaultOptions)
         .then(setOptions, onError);
 
     function setOptions(options) {
-        options = Object.assign({}, defaultOptions, options);
         document.querySelector('#borderColor').value = options.borderColor;
         if (options.elementsWithEventHandlersAreInsecure) {
             document.querySelector('#elementsWithEventHandlersAreInsecure').setAttribute('checked', 'checked');
