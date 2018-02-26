@@ -43,6 +43,10 @@ acceptance-test-image:
 ruby-docker-image:
 	docker build --tag $(ruby_docker_image) --file ruby/Dockerfile .
 
+# Should print nothing if the clean target is up to date
+verify-clean:
+	git clean -ndx
+
 clean:
 	$(RM) $(extension_file) icons/*.png test/acceptance/*.png
 
