@@ -48,7 +48,7 @@ verify-clean:
 	git clean -ndx
 
 clean:
-	$(RM) $(extension_file) icons/*.png test/acceptance/*.png
+	$(RM) --recursive .gradle build $(extension_file) icons/*.png test/acceptance/*.png
 
 .PHONY: acceptance-test-image build changelog clean nodejs-docker-image ruby-docker-image test test-acceptance test-lint test-unit
 
