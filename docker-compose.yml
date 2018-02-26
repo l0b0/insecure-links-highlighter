@@ -2,12 +2,16 @@ version: '3.2'
 services:
 
   acceptance_tests:
-    build:
-      context: .
-      dockerfile: gradle/Dockerfile
+    image: gradle:jdk8
     depends_on:
       - ftpd
       - selenium
+    user: root
+    volumes:
+      - type: bind
+        source: .
+        target: /home/gradle/project
+    working_dir: /home/gradle/project
 
   ftpd:
     image: stilliard/pure-ftpd
