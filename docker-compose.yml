@@ -6,6 +6,7 @@ services:
     depends_on:
       - ftpd
       - selenium
+    user: root
     volumes:
       - type: bind
         source: .
