@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+    <ignored path="$PROJECT_DIR$/.gradle/"/>
+    <ignored path="$PROJECT_DIR$/build/"/>
+    <ignored path="$PROJECT_DIR$/out/"/>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true"/>
     <option name="HIGHLIGHT_CONFLICTS" value="true"/>
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false"/>
@@ -8,12 +11,294 @@
     <option name="SHOW_DIALOG" value="false"/>
     <option name="TRACKING_ENABLED" value="true"/>
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState/>
+    </projectState>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$"/>
   </component>
   <component name="GradleLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="insecure-links-highlighter"/>
+              <option name="path" value="$PROJECT_DIR$"/>
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="insecure-links-highlighter"/>
+                <option name="path" value="$PROJECT_DIR$"/>
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="availableTasks">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the components produced by root project 'insecure-links-highlighter'. [incubating]"/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="components"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="buildDependents"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of root project 'insecure-links-highlighter'."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="projects"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles main classes."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="classes"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in root project 'insecure-links-highlighter'. [incubating]"/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="dependentComponents"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'insecure-links-highlighter'."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="buildEnvironment"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Gradle wrapper files."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="wrapper"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles test classes."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="testClasses"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Javadoc API documentation for the main source code."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="javadoc"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a jar archive containing the main classes."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="jar"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of root project 'insecure-links-highlighter'. [incubating]"/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="model"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes main resources."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="processResources"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the tasks runnable from root project 'insecure-links-highlighter'."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="tasks"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Initializes a new Gradle build."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="init"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the unit tests."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="test"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles main Java source."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="compileJava"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the insight into a specific dependency in root project 'insecure-links-highlighter'."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="dependencyInsight"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="check"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the outputs of this project."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="assemble"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="clean"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles test Java source."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="compileTestJava"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all dependencies declared in root project 'insecure-links-highlighter'."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="dependencies"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes test resources."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="processTestResources"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays a help message."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="help"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="build"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="buildNeeded"/>
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the properties of root project 'insecure-links-highlighter'."/>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$"/>
+                <option name="name" value="properties"/>
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="externalProjectsViewState">
       <projects_view/>
+    </option>
+    <option name="myGradleHomes">
+      <map>
+        <entry key="$PROJECT_DIR$" value="/usr/share/java/gradle"/>
+      </map>
+    </option>
+    <option name="myGradleVersions">
+      <map>
+        <entry key="$PROJECT_DIR$" value="4.5.1"/>
+      </map>
+    </option>
+    <option name="projectBuildClasspath">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <ExternalProjectBuildClasspathPojo>
+              <option name="modulesBuildClasspath">
+                <map>
+                  <entry key="$PROJECT_DIR$">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="path" value="$PROJECT_DIR$"/>
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="name" value="insecure-links-highlighter"/>
+              <option name="projectBuildClasspath">
+                <list>
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/groovy"/>
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/java"/>
+                  <option value="/usr/share/java/gradle/lib/ant-1.9.9.jar"/>
+                  <option value="/usr/share/java/gradle/lib/ant-launcher-1.9.9.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-base-services-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-base-services-groovy-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-build-cache-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-build-option-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-cli-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-core-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-core-api-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-docs-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-installation-beacon-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-jvm-services-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-kotlin-dsl-0.14.2.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-kotlin-dsl-tooling-builders-0.14.2.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-kotlin-dsl-tooling-models-0.14.2.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-launcher-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-logging-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-messaging-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-model-core-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-model-groovy-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-native-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-persistent-cache-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-process-services-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-resources-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-runtime-api-info-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-tooling-api-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/gradle-wrapper-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/groovy-all-2.4.12.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-announce-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-antlr-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-build-cache-http-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-build-comparison-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-build-init-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-code-quality-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-composite-builds-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-dependency-management-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-diagnostics-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-ear-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-ide-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-ide-native-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-ide-play-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-ivy-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-jacoco-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-javascript-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-language-groovy-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-language-java-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-language-jvm-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-language-native-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-language-scala-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-maven-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-osgi-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-platform-base-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-platform-jvm-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-platform-native-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-platform-play-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-plugin-development-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-plugin-use-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-plugins-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-publish-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-reporting-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-resources-gcs-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-resources-http-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-resources-s3-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-resources-sftp-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-scala-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-signing-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-test-kit-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-testing-base-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-testing-jvm-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-testing-native-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-tooling-api-builders-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-version-control-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/gradle-workers-4.5.1.jar"/>
+                  <option value="/usr/share/java/gradle/lib/plugins/ivy-2.2.0.jar"/>
+                </list>
+              </option>
+            </ExternalProjectBuildClasspathPojo>
+          </value>
+        </entry>
+      </map>
     </option>
     <option name="projectSyncType">
       <map>
@@ -42,6 +327,7 @@
       <sortByType/>
     </navigator>
     <panes>
+      <pane id="AndroidView"/>
       <pane id="PackagesPane"/>
       <pane id="ProjectPane"/>
       <pane id="Scope"/>
@@ -65,6 +351,24 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration name="insecure-links-highlighter [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName"/>
+        <option name="externalProjectPath" value="$PROJECT_DIR$"/>
+        <option name="externalSystemIdString" value="GRADLE"/>
+        <option name="scriptParameters"/>
+        <option name="taskDescriptions">
+          <list/>
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test"/>
+          </list>
+        </option>
+        <option name="vmOptions"/>
+      </ExternalSystemSettings>
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea"/>
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name=""/>
       <option name="PROGRAM_PARAMETERS"/>
@@ -159,6 +463,10 @@
   <component name="TimeTrackingManager">
   </component>
   <component name="ToolWindowManager">
+    <editor active="true"/>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1"/>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000"/>
