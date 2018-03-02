@@ -11,11 +11,12 @@ You should have received a copy of the GNU General Public License along with thi
 */
 
 /*global commonAncestor, getLinks, hasInsecureHrefAttribute, hasNonDefaultEventHandler, highlight, isElement*/
-(function (exports) {
+(function () {
     'use strict';
+    let configuration;
 
     function onConfigurationRetrieved(items) {
-        exports.configuration = items;
+        configuration = items;
         processAndObserveDocument();
     }
 
@@ -56,14 +57,12 @@ You should have received a copy of the GNU General Public License along with thi
 
     function highlightInsecureLink(element) {
         if (
-            hasInsecureHrefAttribute(element) ||
-            (exports.configuration.elementsWithEventHandlersAreInsecure && hasNonDefaultEventHandler(element))
+            hasInsecureHrefAttribute(element, location.protocol) ||
+            (configuration.elementsWithEventHandlersAreInsecure && hasNonDefaultEventHandler(element))
         ) {
-            highlight(element, exports.configuration);
+            highlight(element, configuration);
         }
     }
 
-    exports.protocol = location.protocol;
-
     browser.storage.local.get(defaultOptions).then(onConfigurationRetrieved);
-}(this));
+}());

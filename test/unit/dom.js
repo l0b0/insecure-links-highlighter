@@ -11,24 +11,30 @@ describe('dom', function () {
     'use strict';
 
     describe(dom.hasInsecureHrefAttribute.name, function () {
+        const anyProtocol = 'http';
+
         it('should consider links without @href as secure', function () {
             const element = (new JSDOM()).window.document.createElement('a');
-            assert.ok(!dom.hasInsecureHrefAttribute(element, defaultOptions));
+            assert.ok(!dom.hasInsecureHrefAttribute(element, anyProtocol));
         });
 
         it('should delegate links with @href to isSecureURL', function () {
             const element = (new JSDOM()).window.document.createElement('a');
-            element.href = '';
+            element.href = 'URL';
+            let lastCalledWith, returnValue;
 
-            global.isSecureURL = function () {
-                return false;
+            global.isSecureURL = function (href, protocol) {
+                lastCalledWith = [href, protocol];
+                return returnValue;
             };
-            assert.ok(dom.hasInsecureHrefAttribute(element));
 
-            global.isSecureURL = function () {
-                return true;
-            };
-            assert.ok(!dom.hasInsecureHrefAttribute(element));
+            returnValue = false;
+            assert.ok(dom.hasInsecureHrefAttribute(element, anyProtocol));
+            assert.deepStrictEqual(lastCalledWith, ['URL', anyProtocol]);
+
+            returnValue = true;
+            assert.ok(!dom.hasInsecureHrefAttribute(element, anyProtocol));
+            assert.deepStrictEqual(lastCalledWith, ['URL', anyProtocol]);
         });
     });
 
