@@ -60,14 +60,7 @@ You should have received a copy of the GNU General Public License along with thi
         }
     }
 
-    if (typeof document !== 'undefined') {
-        exports.protocol = location.protocol;
+    exports.protocol = location.protocol;
 
-        if (typeof browser !== 'undefined') {
-            browser.storage.local.get(defaultOptions).then(onConfigurationRetrieved);
-        } else {
-            exports.configuration = defaultOptions;
-            processAndObserveDocument();
-        }
-    }
+    browser.storage.local.get(defaultOptions).then(onConfigurationRetrieved);
 }(this));
