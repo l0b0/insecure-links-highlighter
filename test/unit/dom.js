@@ -45,12 +45,10 @@ describe('dom', function () {
 
     describe(dom.commonAncestor.name, function () {
         it('should return the parent of two sibling elements', function () {
-            const document = (new JSDOM()).window.document;
-
-            const parent = document.createElement('parent');
-
-            const firstChild = document.createElement('child');
-            const secondChild = document.createElement('child');
+            const document = (new JSDOM()).window.document,
+                parent = document.createElement('parent'),
+                firstChild = document.createElement('child'),
+                secondChild = document.createElement('child');
 
             parent.appendChild(firstChild);
             parent.appendChild(secondChild);
@@ -59,11 +57,9 @@ describe('dom', function () {
         });
 
         it('should return the parent from a parent and child', function () {
-            const document = (new JSDOM()).window.document;
-
-            const parent = document.createElement('parent');
-
-            const child = document.createElement('child');
+            const document = (new JSDOM()).window.document,
+                parent = document.createElement('parent'),
+                child = document.createElement('child');
 
             parent.appendChild(child);
 
@@ -73,20 +69,17 @@ describe('dom', function () {
 
     describe(dom.ancestors.name, function () {
         it('should return the element if it has no parent', function () {
-            const document = (new JSDOM()).window.document;
-
-            const element = document.createElement('element');
+            const document = (new JSDOM()).window.document,
+                element = document.createElement('element');
 
             assert.deepEqual(dom.ancestors(element), [element]);
         });
 
         it('should return the parent and the element, oldest first', function () {
-            const document = (new JSDOM()).window.document;
-
-            const parent = document.createElement('parent');
-
-            const firstChild = document.createElement('child');
-            const secondChild = document.createElement('child');
+            const document = (new JSDOM()).window.document,
+                parent = document.createElement('parent'),
+                firstChild = document.createElement('child'),
+                secondChild = document.createElement('child');
 
             parent.appendChild(firstChild);
             parent.appendChild(secondChild);

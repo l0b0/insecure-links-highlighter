@@ -40,8 +40,8 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function onElementMutation(mutationRecords) {
-        const addedElementsList = mutationRecords.map(mutationRecordElements);
-        const addedElements = [].concat.apply([], addedElementsList);
+        const addedElementsList = mutationRecords.map(mutationRecordElements),
+            addedElements = [].concat.apply([], addedElementsList);
 
         processNode(commonAncestor(addedElements));
     }
