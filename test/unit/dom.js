@@ -55,7 +55,7 @@ describe('dom', function () {
             parent.appendChild(firstChild);
             parent.appendChild(secondChild);
 
-            assert.equal(parent, dom.commonAncestor([firstChild, secondChild]));
+            assert.equal(dom.commonAncestor([firstChild, secondChild]), parent);
         });
 
         it('should return the parent from a parent and child', function () {
@@ -67,7 +67,7 @@ describe('dom', function () {
 
             parent.appendChild(child);
 
-            assert.equal(parent, dom.commonAncestor([parent, child]));
+            assert.equal(dom.commonAncestor([parent, child]), parent);
         });
     });
 
@@ -77,7 +77,7 @@ describe('dom', function () {
 
             const element = document.createElement('element');
 
-            assert.deepEqual([element], dom.ancestors(element));
+            assert.deepEqual(dom.ancestors(element), [element]);
         });
 
         it('should return the parent and the element, oldest first', function () {
@@ -91,7 +91,7 @@ describe('dom', function () {
             parent.appendChild(firstChild);
             parent.appendChild(secondChild);
 
-            assert.deepEqual([parent, firstChild], dom.ancestors(firstChild));
+            assert.deepEqual(dom.ancestors(firstChild), [parent, firstChild]);
         });
     });
 
