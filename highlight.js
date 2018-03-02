@@ -10,93 +10,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/*global isSecureURL*/
+/*global commonAncestor, isInsecureLink, highlight*/
 (function (exports) {
     'use strict';
-
-    const eventHandlerAttributes = [
-        'onabort',
-        // 'onafterprint',
-        // 'onauxclick',
-        // 'onbeforeprint',
-        // 'onbeforeunload',
-        'onblur',
-        // 'oncancel',
-        'oncanplay',
-        'oncanplaythrough',
-        'onchange',
-        'onclick',
-        'onclose',
-        'oncontextmenu',
-        // 'oncopy',
-        // 'oncuechange',
-        'oncut',
-        'ondblclick',
-        'ondrag',
-        'ondragend',
-        'ondragenter',
-        'ondragexit',
-        'ondragleave',
-        'ondragover',
-        'ondragstart',
-        'ondrop',
-        'ondurationchange',
-        'onemptied',
-        'onended',
-        'onerror',
-        'onfocus',
-        // 'onhashchange',
-        'oninput',
-        'oninvalid',
-        'onkeydown',
-        'onkeypress',
-        'onkeyup',
-        // 'onlanguagechange',
-        'onload',
-        'onloadeddata',
-        'onloadedmetadata',
-        'onloadend',
-        'onloadstart',
-        // 'onmessage',
-        // 'onmessageerror',
-        'onmousedown',
-        'onmouseenter',
-        'onmouseleave',
-        'onmousemove',
-        'onmouseout',
-        'onmouseover',
-        'onmouseup',
-        // 'onoffline',
-        // 'ononline',
-        // 'onpagehide',
-        // 'onpageshow',
-        'onpaste',
-        'onpause',
-        'onplay',
-        'onplaying',
-        // 'onpopstate',
-        'onprogress',
-        'onratechange',
-        // 'onrejectionhandled',
-        'onreset',
-        'onresize',
-        'onscroll',
-        // 'onsecuritypolicyviolation',
-        'onseeked',
-        'onseeking',
-        'onselect',
-        'onstalled',
-        // 'onstorage',
-        'onsubmit',
-        'onsuspend',
-        'ontimeupdate',
-        'ontoggle',
-        // 'onunhandledrejection',
-        // 'onunload',
-        'onvolumechange',
-        'onwaiting',
-        'onwheel',
-    ];
 
     function onConfigurationRetrieved(items) {
         exports.configuration = items;
@@ -138,33 +54,6 @@ You should have received a copy of the GNU General Public License along with thi
         return node instanceof Element;
     }
 
-    function commonAncestor(elements) {
-        const ancestorLists = elements.map(ancestors);
-        let commonAncestorIndex = 0,
-            commonAncestor;
-
-        function hasNextAncestor(ancestors) {
-            return ancestors[commonAncestorIndex + 1] === commonAncestor;
-        }
-
-        do {
-            commonAncestor = ancestorLists[0][commonAncestorIndex];
-            commonAncestorIndex++;
-        } while (ancestorLists.every(hasNextAncestor));
-
-        return commonAncestor;
-    }
-
-    function ancestors(element) {
-        let ancestors = [element];
-        while (element.parentElement !== null) {
-            let parent = element.parentElement;
-            ancestors.unshift(parent);
-            element = parent;
-        }
-        return ancestors;
-    }
-
     function processNode(node) {
         [].forEach.call(
             getLinks(node),
@@ -177,37 +66,10 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function highlightInsecureLink(element) {
-        if (isInsecureLink(element)) {
-            highlight(element);
+        if (isInsecureLink(element, exports.configuration)) {
+            highlight(element, exports.configuration);
         }
     }
-
-    function isInsecureLink(element) {
-        function hasEventHandler(handlerAttribute) {
-            const attribute = element[handlerAttribute];
-            return attribute !== undefined && attribute !== null;
-        }
-
-        if (exports.configuration.elementsWithEventHandlersAreInsecure && eventHandlerAttributes.some(hasEventHandler)) {
-            return true;
-        }
-
-        return element.hasAttribute('href') && !isSecureURL(element.getAttribute('href'), exports.protocol);
-    }
-
-    function highlight(element) {
-        if (element.style.cssText !== '') {
-            element.style.cssText += '; ';
-        }
-
-        element.classList.add(exports.configuration.class);
-        element.style.cssText += `border-color: ${exports.configuration.borderColor} !important; border-style: solid !important;`;
-    }
-
-    exports.ancestors = ancestors;
-    exports.commonAncestor = commonAncestor;
-    exports.isInsecureLink = isInsecureLink;
-    exports.highlight = highlight;
 
     if (typeof document !== 'undefined') {
         exports.protocol = location.protocol;
