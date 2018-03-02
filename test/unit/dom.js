@@ -72,7 +72,7 @@ describe('dom', function () {
             const document = (new JSDOM()).window.document,
                 element = document.createElement('element');
 
-            assert.deepEqual(dom.ancestors(element), [element]);
+            assert.deepStrictEqual(dom.ancestors(element), [element]);
         });
 
         it('should return the parent and the element, oldest first', function () {
@@ -84,7 +84,7 @@ describe('dom', function () {
             parent.appendChild(firstChild);
             parent.appendChild(secondChild);
 
-            assert.deepEqual(dom.ancestors(firstChild), [parent, firstChild]);
+            assert.deepStrictEqual(dom.ancestors(firstChild), [parent, firstChild]);
         });
     });
 
