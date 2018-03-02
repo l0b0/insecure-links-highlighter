@@ -153,7 +153,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     exports.ancestors = ancestors;
     exports.commonAncestor = commonAncestor;
+    exports.highlight = highlight;
     exports.isElement = isElement;
     exports.isInsecureLink = isInsecureLink;
-    exports.highlight = highlight;
 }(this));
