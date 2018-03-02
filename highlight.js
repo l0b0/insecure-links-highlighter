@@ -10,7 +10,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/*global commonAncestor, highlight, isElement, isInsecureLink*/
+/*global commonAncestor, getLinks, highlight, isElement, isInsecureLink*/
 (function (exports) {
     'use strict';
 
@@ -51,14 +51,7 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function processNode(node) {
-        [].forEach.call(
-            getLinks(node),
-            highlightInsecureLink
-        );
-    }
-
-    function getLinks(node) {
-        return node.getElementsByTagName('a');
+        getLinks(node).forEach(highlightInsecureLink);
     }
 
     function highlightInsecureLink(element) {

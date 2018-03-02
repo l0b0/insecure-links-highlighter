@@ -147,12 +147,17 @@ You should have received a copy of the GNU General Public License along with thi
         element.style.cssText += `border-color: ${configuration.borderColor} !important; border-style: solid !important;`;
     }
 
+    function getLinks(node) {
+        return Array.from(node.getElementsByTagName('a'));
+    }
+
     function isElement(node) {
         return node.nodeType === Node.ELEMENT_NODE;
     }
 
     exports.ancestors = ancestors;
     exports.commonAncestor = commonAncestor;
+    exports.getLinks = getLinks;
     exports.highlight = highlight;
     exports.isElement = isElement;
     exports.isInsecureLink = isInsecureLink;

@@ -88,6 +88,39 @@ describe('dom', function () {
         });
     });
 
+    describe(dom.getLinks.name, function () {
+        it('should return direct child link', function () {
+            const document = (new JSDOM()).window.document,
+                parent = document.createElement('parent'),
+                link = document.createElement('a');
+            parent.appendChild(link);
+
+            assert.deepStrictEqual(dom.getLinks(parent), [link]);
+        });
+        it('should return direct multiple descendant link', function () {
+            const document = (new JSDOM()).window.document,
+                grandparent = document.createElement('grandparent'),
+                parent = document.createElement('parent'),
+                link = document.createElement('a');
+            parent.appendChild(link);
+            grandparent.appendChild(parent);
+
+            assert.deepStrictEqual(dom.getLinks(grandparent), [link]);
+        });
+        it('should return multiple links at multiple levels', function () {
+            const document = (new JSDOM()).window.document,
+                grandparent = document.createElement('grandparent'),
+                childLink = document.createElement('a'),
+                parent = document.createElement('parent'),
+                grandchildLink = document.createElement('a');
+            parent.appendChild(grandchildLink);
+            grandparent.appendChild(parent);
+            grandparent.appendChild(childLink);
+
+            assert.deepStrictEqual(dom.getLinks(grandparent), [grandchildLink, childLink]);
+        });
+    });
+
     describe(dom.isElement.name, function () {
         it('should return true for an element', function () {
             const element = (new JSDOM()).window.document.createElement('name');
