@@ -10,7 +10,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/*global commonAncestor, getLinks, highlight, isElement, isInsecureLink*/
+/*global commonAncestor, getLinks, hasInsecureHrefAttribute, hasNonDefaultEventHandler, highlight, isElement*/
 (function (exports) {
     'use strict';
 
@@ -55,7 +55,10 @@ You should have received a copy of the GNU General Public License along with thi
     }
 
     function highlightInsecureLink(element) {
-        if (isInsecureLink(element, exports.configuration)) {
+        if (
+            hasInsecureHrefAttribute(element) ||
+            (exports.configuration.elementsWithEventHandlersAreInsecure && hasNonDefaultEventHandler(element))
+        ) {
             highlight(element, exports.configuration);
         }
     }

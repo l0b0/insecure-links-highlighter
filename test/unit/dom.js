@@ -10,22 +10,38 @@ global.Node = (new JSDOM()).window.Node;
 describe('dom', function () {
     'use strict';
 
-    describe(dom.isInsecureLink.name, function () {
+    describe(dom.hasInsecureHrefAttribute.name, function () {
         it('should consider links without @href as secure', function () {
             const element = (new JSDOM()).window.document.createElement('a');
-            assert.ok(!dom.isInsecureLink(element, defaultOptions));
+            assert.ok(!dom.hasInsecureHrefAttribute(element, defaultOptions));
         });
 
-        it('should consider links with @onclick as insecure by default', function () {
+        it('should delegate links with @href to isSecureURL', function () {
             const element = (new JSDOM()).window.document.createElement('a');
-            element.onclick = function() {};
-            assert.ok(dom.isInsecureLink(element, defaultOptions));
+            element.href = '';
+
+            global.isSecureURL = function () {
+                return false;
+            };
+            assert.ok(dom.hasInsecureHrefAttribute(element));
+
+            global.isSecureURL = function () {
+                return true;
+            };
+            assert.ok(!dom.hasInsecureHrefAttribute(element));
+        });
+    });
+
+    describe(dom.hasNonDefaultEventHandler.name, function () {
+        it('should consider link with @onclick event handler as insecure', function () {
+            const element = (new JSDOM()).window.document.createElement('a');
+            element.onclick = function () {};
+            assert.ok(dom.hasNonDefaultEventHandler(element));
         });
 
-        it('should consider links with @onclick as secure if configured as such', function () {
+        it('should consider link without event handler as secure', function () {
             const element = (new JSDOM()).window.document.createElement('a');
-            element.onclick = function() {};
-            assert.ok(!dom.isInsecureLink(element, Object.assign({}, defaultOptions, {elementsWithEventHandlersAreInsecure: false})));
+            assert.ok(!dom.hasNonDefaultEventHandler(element));
         });
     });
 

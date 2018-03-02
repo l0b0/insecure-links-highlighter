@@ -125,17 +125,17 @@ You should have received a copy of the GNU General Public License along with thi
         return ancestors;
     }
 
-    function isInsecureLink(element, configuration) {
+    function hasInsecureHrefAttribute(element) {
+        return element.hasAttribute('href') && !isSecureURL(element.getAttribute('href'), exports.protocol);
+    }
+
+    function hasNonDefaultEventHandler(element) {
         function hasEventHandler(handlerAttribute) {
             const attribute = element[handlerAttribute];
             return attribute !== undefined && attribute !== null;
         }
 
-        if (configuration.elementsWithEventHandlersAreInsecure && eventHandlerAttributes.some(hasEventHandler)) {
-            return true;
-        }
-
-        return element.hasAttribute('href') && !isSecureURL(element.getAttribute('href'), exports.protocol);
+        return eventHandlerAttributes.some(hasEventHandler);
     }
 
     function highlight(element, configuration) {
@@ -158,7 +158,8 @@ You should have received a copy of the GNU General Public License along with thi
     exports.ancestors = ancestors;
     exports.commonAncestor = commonAncestor;
     exports.getLinks = getLinks;
+    exports.hasInsecureHrefAttribute = hasInsecureHrefAttribute;
+    exports.hasNonDefaultEventHandler = hasNonDefaultEventHandler;
     exports.highlight = highlight;
     exports.isElement = isElement;
-    exports.isInsecureLink = isInsecureLink;
 }(this));
