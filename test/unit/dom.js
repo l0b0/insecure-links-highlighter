@@ -5,6 +5,8 @@ const assert = require('assert'),
     dom = require('../../dom'),
     {JSDOM} = require('jsdom');
 
+global.Node = (new JSDOM()).window.Node;
+
 describe('dom', function () {
     'use strict';
 
@@ -90,6 +92,17 @@ describe('dom', function () {
             parent.appendChild(secondChild);
 
             assert.deepEqual([parent, firstChild], dom.ancestors(firstChild));
+        });
+    });
+
+    describe(dom.isElement.name, function () {
+        it('should return true for an element', function () {
+            const element = (new JSDOM()).window.document.createElement('name');
+            assert.ok(dom.isElement(element));
+        });
+        it('should return false for an attribute', function () {
+            const element = (new JSDOM()).window.document.createAttribute('name');
+            assert.ok(!dom.isElement(element));
         });
     });
 });

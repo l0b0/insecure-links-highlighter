@@ -10,7 +10,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/*global commonAncestor, highlight, isInsecureLink*/
+/*global commonAncestor, highlight, isElement, isInsecureLink*/
 (function (exports) {
     'use strict';
 
@@ -48,10 +48,6 @@ You should have received a copy of the GNU General Public License along with thi
 
     function mutationRecordElements(mutationRecord) {
         return Array.from(mutationRecord.addedNodes).filter(isElement);
-    }
-
-    function isElement(node) {
-        return node instanceof Element;
     }
 
     function processNode(node) {
