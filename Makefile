@@ -13,7 +13,7 @@ icons = icons/48.png icons/96.png
 
 build: $(extension_file)
 
-$(extension_file): defaultOptions.js highlight.js $(icons) _locales manifest.json options.html options.js
+$(extension_file): defaultOptions.js highlight.js $(icons) _locales manifest.json options.html options.js url.js
 	zip -r -FS $@ $^
 
 icons/%.png: icons/icon.svg

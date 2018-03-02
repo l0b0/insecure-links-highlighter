@@ -12,6 +12,7 @@
       ],
       "js": [
         "defaultOptions.js",
+        "url.js",
         "highlight.js"
       ],
       "all_frames": true

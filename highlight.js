@@ -10,109 +10,93 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*global isSecureURL*/
 (function (exports) {
     'use strict';
 
-    const protocolPrefixRegex = new RegExp('^[a-z]+://'),
-
-        // Known secure protocols handled by the browser
-        internalSecureProtocols = ['https'],
-
-        // Presumed secure since they are handled externally (see network.protocol-handler.external.[protocol])
-        externallyHandledProtocols = ['mailto', 'news', 'nntp', 'snews'],
-
-        // Presumed secure, commonly handled by add-ons or externally
-        expectedExternallyHandledProtocols = ['tel'],
-
-        secureProtocols = [].concat(
-            internalSecureProtocols,
-            externallyHandledProtocols,
-            expectedExternallyHandledProtocols
-        ),
-
-        eventHandlerAttributes = [
-            'onabort',
-            // 'onafterprint',
-            // 'onauxclick',
-            // 'onbeforeprint',
-            // 'onbeforeunload',
-            'onblur',
-            // 'oncancel',
-            'oncanplay',
-            'oncanplaythrough',
-            'onchange',
-            'onclick',
-            'onclose',
-            'oncontextmenu',
-            // 'oncopy',
-            // 'oncuechange',
-            'oncut',
-            'ondblclick',
-            'ondrag',
-            'ondragend',
-            'ondragenter',
-            'ondragexit',
-            'ondragleave',
-            'ondragover',
-            'ondragstart',
-            'ondrop',
-            'ondurationchange',
-            'onemptied',
-            'onended',
-            'onerror',
-            'onfocus',
-            // 'onhashchange',
-            'oninput',
-            'oninvalid',
-            'onkeydown',
-            'onkeypress',
-            'onkeyup',
-            // 'onlanguagechange',
-            'onload',
-            'onloadeddata',
-            'onloadedmetadata',
-            'onloadend',
-            'onloadstart',
-            // 'onmessage',
-            // 'onmessageerror',
-            'onmousedown',
-            'onmouseenter',
-            'onmouseleave',
-            'onmousemove',
-            'onmouseout',
-            'onmouseover',
-            'onmouseup',
-            // 'onoffline',
-            // 'ononline',
-            // 'onpagehide',
-            // 'onpageshow',
-            'onpaste',
-            'onpause',
-            'onplay',
-            'onplaying',
-            // 'onpopstate',
-            'onprogress',
-            'onratechange',
-            // 'onrejectionhandled',
-            'onreset',
-            'onresize',
-            'onscroll',
-            // 'onsecuritypolicyviolation',
-            'onseeked',
-            'onseeking',
-            'onselect',
-            'onstalled',
-            // 'onstorage',
-            'onsubmit',
-            'onsuspend',
-            'ontimeupdate',
-            'ontoggle',
-            // 'onunhandledrejection',
-            // 'onunload',
-            'onvolumechange',
-            'onwaiting',
-            'onwheel',
-        ];
+    const eventHandlerAttributes = [
+        'onabort',
+        // 'onafterprint',
+        // 'onauxclick',
+        // 'onbeforeprint',
+        // 'onbeforeunload',
+        'onblur',
+        // 'oncancel',
+        'oncanplay',
+        'oncanplaythrough',
+        'onchange',
+        'onclick',
+        'onclose',
+        'oncontextmenu',
+        // 'oncopy',
+        // 'oncuechange',
+        'oncut',
+        'ondblclick',
+        'ondrag',
+        'ondragend',
+        'ondragenter',
+        'ondragexit',
+        'ondragleave',
+        'ondragover',
+        'ondragstart',
+        'ondrop',
+        'ondurationchange',
+        'onemptied',
+        'onended',
+        'onerror',
+        'onfocus',
+        // 'onhashchange',
+        'oninput',
+        'oninvalid',
+        'onkeydown',
+        'onkeypress',
+        'onkeyup',
+        // 'onlanguagechange',
+        'onload',
+        'onloadeddata',
+        'onloadedmetadata',
+        'onloadend',
+        'onloadstart',
+        // 'onmessage',
+        // 'onmessageerror',
+        'onmousedown',
+        'onmouseenter',
+        'onmouseleave',
+        'onmousemove',
+        'onmouseout',
+        'onmouseover',
+        'onmouseup',
+        // 'onoffline',
+        // 'ononline',
+        // 'onpagehide',
+        // 'onpageshow',
+        'onpaste',
+        'onpause',
+        'onplay',
+        'onplaying',
+        // 'onpopstate',
+        'onprogress',
+        'onratechange',
+        // 'onrejectionhandled',
+        'onreset',
+        'onresize',
+        'onscroll',
+        // 'onsecuritypolicyviolation',
+        'onseeked',
+        'onseeking',
+        'onselect',
+        'onstalled',
+        // 'onstorage',
+        'onsubmit',
+        'onsuspend',
+        'ontimeupdate',
+        'ontoggle',
+        // 'onunhandledrejection',
+        // 'onunload',
+        'onvolumechange',
+        'onwaiting',
+        'onwheel',
+    ];
 
     function onConfigurationRetrieved(items) {
         exports.configuration = items;
@@ -211,20 +195,6 @@ You should have received a copy of the GNU General Public License along with thi
         return element.hasAttribute('href') && !isSecureURL(element.getAttribute('href'), exports.protocol);
     }
 
-    function isSecureURL(url, protocol) {
-        const urlProtocol = url.split(':', 1)[0].toLowerCase();
-
-        if (secureProtocols.includes(urlProtocol)) {
-            return true;
-        }
-
-        return !hasExplicitProtocol(url) && (protocol === 'file:' || protocol === 'https:');
-    }
-
-    function hasExplicitProtocol(url) {
-        return protocolPrefixRegex.test(url.toLowerCase());
-    }
-
     function highlight(element) {
         if (element.style.cssText !== '') {
             element.style.cssText += '; ';
@@ -240,9 +210,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     exports.ancestors = ancestors;
     exports.commonAncestor = commonAncestor;
-    exports.hasExplicitProtocol = hasExplicitProtocol;
     exports.isInsecureLink = isInsecureLink;
-    exports.isSecureURL = isSecureURL;
     exports.highlight = highlight;
 
     if (typeof document !== 'undefined') {
