@@ -204,10 +204,6 @@ You should have received a copy of the GNU General Public License along with thi
         element.style.cssText += `border-color: ${exports.configuration.borderColor} !important; border-style: solid !important;`;
     }
 
-    function onError(error) {
-        throw error;
-    }
-
     exports.ancestors = ancestors;
     exports.commonAncestor = commonAncestor;
     exports.isInsecureLink = isInsecureLink;
@@ -217,7 +213,7 @@ You should have received a copy of the GNU General Public License along with thi
         exports.protocol = location.protocol;
 
         if (typeof browser !== 'undefined') {
-            browser.storage.local.get(defaultOptions).then(onConfigurationRetrieved, onError);
+            browser.storage.local.get(defaultOptions).then(onConfigurationRetrieved);
         } else {
             exports.configuration = defaultOptions;
             processAndObserveDocument();
