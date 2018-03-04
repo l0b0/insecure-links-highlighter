@@ -48,4 +48,9 @@ public class LocalFileTests extends TestCase {
         assertLinkIsHighlighted("modify on mouse down");
     }
 
+    @Test
+    public void shouldHighlightHttpUrlInIframe() {
+        driver.switchTo().frame("iframe");
+        assertLinkIsHighlighted("http");
+    }
 }
