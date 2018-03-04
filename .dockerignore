@@ -1,5 +1,6 @@
 *
 !nodejs/package.json
 !nodejs/package-lock.json
+!ruby/changelog.sh
 !*.js
 !test/
