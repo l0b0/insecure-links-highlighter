@@ -61,7 +61,7 @@ describe('dom', function () {
         it('should set the style of the element', function () {
             const element = (new JSDOM()).window.document.createElement('a');
             dom.highlight(element, defaultOptions);
-            assert.equal(element.style.cssText, 'border-color: red !important; border-style: solid !important;');
+            assert.equal(element.style.cssText, 'border-color: red !important; border-style: solid !important; border-width: medium !important;');
         });
     });
 

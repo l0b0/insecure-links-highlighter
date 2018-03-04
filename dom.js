@@ -144,7 +144,7 @@ You should have received a copy of the GNU General Public License along with thi
         }
 
         element.classList.add(configuration.class);
-        element.style.cssText += `border-color: ${configuration.borderColor} !important; border-style: solid !important;`;
+        element.style.cssText += `border-color: ${configuration.borderColor} !important; border-style: solid !important; border-width: medium !important;`;
     }
 
     function getLinks(node) {
