@@ -1,7 +1,7 @@
 package name.engmark.insecureLinksHighlighter;
 
 import org.junit.Before;
-import org.junit.Ignore;
+import org.junit.Test;
 
 public class FtpTests extends TestCase {
     @Before
@@ -9,7 +9,7 @@ public class FtpTests extends TestCase {
         driver.get("ftp://user:password@ftpd");
     }
 
-    @Ignore
+    @Test
     public void shouldHighlightParentDirectoryUrl() {
         assertLinkIsHighlighted("Up to higher level directory");
     }
