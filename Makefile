@@ -1,5 +1,3 @@
-GRADLE_USER ?= gradle
-
 name = $(notdir $(CURDIR))
 
 nodejs_docker_image = $(name)-nodejs
@@ -27,7 +25,7 @@ changelog: .git/HEAD ruby-docker-image
 test: test-acceptance test-lint test-unit
 
 test-acceptance: acceptance-test-image $(extension_file)
-	docker-compose run --rm --user=$(GRADLE_USER) acceptance_tests gradle --info test
+	docker-compose run --rm acceptance_tests gradle --info test
 
 test-unit: nodejs-docker-image
 	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/mocha test/unit
