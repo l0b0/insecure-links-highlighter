@@ -10,6 +10,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,8 +74,17 @@ public class TestCase {
     }
 
     protected boolean linkIsHighlighted(String linkText) {
-        final WebElement link = driver.findElement(By.linkText(linkText));
-        final String[] classes = link.getAttribute("class").split(" ");
-        return Arrays.asList(classes).contains("insecure-links-highlighter-highlighted");
+        try {
+            return new WebDriverWait(driver, 2)
+                    .until(
+                            (ExpectedCondition<Boolean>) input -> {
+                                final WebElement link = driver.findElement(By.linkText(linkText));
+                                final String[] classes = link.getAttribute("class").split(" ");
+                                return Arrays.asList(classes).contains("insecure-links-highlighter-highlighted");
+                            }
+                    );
+        } catch (TimeoutException exception) {
+            return false;
+        }
     }
 }
