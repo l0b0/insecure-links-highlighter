@@ -6,6 +6,8 @@ script:
   - make
   - sudo chgrp 1000 -R .
   - make test
+  - make clean
+  - make verify-clean
 sudo: required
 services:
   - docker
