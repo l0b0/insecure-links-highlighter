@@ -29,7 +29,7 @@ test-acceptance: acceptance-test-image $(extension_file)
 	docker-compose run --rm acceptance_tests gradle --info test
 
 test-unit: nodejs-docker-image
-	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/mocha test/unit
+	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/nyc /project/node_modules/.bin/mocha test/unit
 
 test-lint: nodejs-docker-image acceptance-test-image
 	docker run --rm $(nodejs_docker_image) /project/node_modules/.bin/eslint .

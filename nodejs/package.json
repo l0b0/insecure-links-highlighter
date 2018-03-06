@@ -4,10 +4,18 @@
   "devDependencies": {
     "eslint": "^4.17.0",
     "jsdom": "^11.6.2",
-    "mocha": "^5.0.0"
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:l0b0/insecure-links-highlighter.git"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "statements": 100,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100
   }
 }

@@ -63,6 +63,13 @@ describe('dom', function () {
             dom.highlight(element, defaultOptions);
             assert.equal(element.style.cssText, 'border-color: red !important; border-style: solid !important; border-width: medium !important;');
         });
+
+        it('should add to the style of the element if it is already styled', function () {
+            const element = (new JSDOM()).window.document.createElement('a');
+            element.style = 'color: black;';
+            dom.highlight(element, defaultOptions);
+            assert.equal(element.style.cssText, 'color: black; border-color: red !important; border-style: solid !important; border-width: medium !important;');
+        });
     });
 
     describe(dom.commonAncestor.name, function () {
