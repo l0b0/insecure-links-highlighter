@@ -15,7 +15,7 @@ $(extension_file): defaultOptions.js dom.js highlight.js $(icons) _locales manif
 	zip -r -FS $@ $^
 
 %.png: %.unoptimized.png
-	optipng -out $@ $<
+	optipng -o7 -out $@ $<
 
 icons/%.unoptimized.png: icons/icon.svg
 	convert -resize $*x$* $< $@
