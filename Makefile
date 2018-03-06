@@ -14,10 +14,11 @@ build: $(extension_file)
 $(extension_file): defaultOptions.js dom.js highlight.js $(icons) _locales manifest.json options.html options.js url.js
 	zip -r -FS $@ $^
 
-icons/%.png: icons/icon.svg
+%.png: %.unoptimized.png
+	optipng -out $@ $<
+
+icons/%.unoptimized.png: icons/icon.svg
 	convert -resize $*x$* $< $@
-	optipng -out /tmp/icon.png $@
-	mv /tmp/icon.png $@
 
 changelog: .git/HEAD ruby-docker-image
 	docker run --env CHANGELOG_GITHUB_TOKEN=$(CHANGELOG_GITHUB_TOKEN) --rm $(ruby_docker_image) /changelog.sh
