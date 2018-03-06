@@ -12,15 +12,24 @@ You should have received a copy of the GNU General Public License along with thi
 
 function saveOptions(event) {
     event.preventDefault();
-    let borderColor = document.querySelector('#borderColor').value;
 
-    let messageElement = document.querySelector('#borderColorMessage');
+    let borderColorElement = document.querySelector('#borderColor'),
+        borderColor = borderColorElement.value,
+        borderColorMessageElementId = 'borderColorMessage',
+        messageElement = document.querySelector('#' + borderColorMessageElementId);
+
+    if (messageElement !== null) {
+        messageElement.remove();
+    }
     if (!isValidColorString(borderColor)) {
-        messageElement.innerHTML = ' ' + browser.i18n.getMessage('invalidBorderColorMessage', borderColor);
-        messageElement.style.display = '';
+        let messageElement = document.createElement('p'),
+            message = browser.i18n.getMessage('invalidBorderColorMessage', borderColor),
+            messageTextNode = document.createTextNode(message);
+        messageElement.id = borderColorMessageElementId;
+        messageElement.classList.add('error');
+        messageElement.appendChild(messageTextNode);
+        borderColorElement.parentElement.parentElement.insertAdjacentElement('afterend', messageElement);
         return;
-    } else {
-        messageElement.style.display = 'none';
     }
 
     browser.storage.local.set({
