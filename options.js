@@ -12,8 +12,19 @@ You should have received a copy of the GNU General Public License along with thi
 
 function saveOptions(event) {
     event.preventDefault();
+    let borderColor = document.querySelector('#borderColor').value;
+
+    let messageElement = document.querySelector('#borderColorMessage');
+    if (!isValidColorString(borderColor)) {
+        messageElement.innerHTML = ' ' + browser.i18n.getMessage('invalidBorderColorMessage', borderColor);
+        messageElement.style.display = '';
+        return;
+    } else {
+        messageElement.style.display = 'none';
+    }
+
     browser.storage.local.set({
-        borderColor: document.querySelector('#borderColor').value,
+        borderColor: borderColor,
         elementsWithEventHandlersAreInsecure: document.querySelector('#elementsWithEventHandlersAreInsecure').checked,
     });
 }
@@ -40,6 +51,21 @@ function setDefaultsAndRestoreOptions() {
     restoreOptions();
 }
 
+function isValidColorString(color) {
+    if (['', 'inherit', 'transparent'].includes(color)) {
+        return false;
+    }
+
+    let imageElement = document.createElement('img');
+    imageElement.style.color = 'rgb(0, 0, 0)';
+    imageElement.style.color = color;
+    if (imageElement.style.color !== 'rgb(0, 0, 0)') {
+        return true;
+    }
+    imageElement.style.color = 'rgb(255, 255, 255)';
+    imageElement.style.color = color;
+    return imageElement.style.color !== 'rgb(255, 255, 255)';
+}
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.querySelector('form').addEventListener('submit', saveOptions);

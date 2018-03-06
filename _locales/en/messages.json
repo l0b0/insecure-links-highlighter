@@ -6,5 +6,15 @@
   "extensionDescription": {
     "message": "Highlight insecure links such as ‘http://example.org’.",
     "description": "Description of the extension."
+  },
+  "invalidBorderColorMessage": {
+    "message": "‘$COLOR$’ is not a valid color. Please enter something like ‘red’, ‘#0000ff’ or ‘rgb(0, 255, 0)’.",
+    "description": "Error message shown to the user when trying to save an invalid color value.",
+    "placeholders": {
+      "color" : {
+        "content" : "$1",
+        "example" : "octarine"
+      }
+    }
   }
 }
