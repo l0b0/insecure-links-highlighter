@@ -13,7 +13,7 @@ Highlights insecure links such as:
 
 ## Download
 
-[Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/insecure-links-highlighter/)
+[Firefox add-on](https://addons.mozilla.org/firefox/addon/insecure-links-highlighter/)
 
 ## Build
 
