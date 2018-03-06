@@ -6,6 +6,7 @@ script:
   - make
   - sudo chgrp 1000 -R .
   - make test
+  - sudo chown --recursive --reference=. .gradle build
   - make clean
   - make verify-clean
 sudo: required
