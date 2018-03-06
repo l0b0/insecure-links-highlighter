@@ -46,7 +46,7 @@ ruby-docker-image:
 
 # Should print nothing if the clean target is up to date
 verify-clean:
-	git clean -ndx
+	output="$$(git clean -ndx)" && [ -z "$$output" ]
 
 clean:
 	$(RM) --recursive .gradle build $(extension_file) icons/*.png test/acceptance/*.png
