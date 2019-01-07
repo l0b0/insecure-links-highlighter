@@ -1,3 +1,5 @@
+[Moved to GitLab](https://gitlab.com/victor-engmark/insecure-links-highlighter)
+
 # Insecure Links Highlighter [![Build Status](https://travis-ci.org/l0b0/insecure-links-highlighter.svg?branch=master)](https://travis-ci.org/l0b0/insecure-links-highlighter)
 
 Easily notice insecure links in Firefox by their bright red border:
